@@ -1,6 +1,7 @@
 # CP3407-Chatbot
 # Orientation Chatbot Application
 
+## Week 1 CP 3407 Workshop 1
 ## Project Overview
 The **Orientation Chatbot Application** is a web-based chatbot designed to enhance the experience and engagement of new students during their orientation program. This chatbot utilizes the **ChatGPT API** to provide immediate and accurate responses to questions about orientation schedules, events, and policies. It also fosters social connections by suggesting interactive games and activities.
 
@@ -48,8 +49,7 @@ By leveraging data from the **Student Affairs department**, the chatbot ensures 
 
 
 
-# Week 2
-# CP 3407 Workshop 2
+## Week 2 CP 3407 Workshop 2
 
 ## Activity One
 
@@ -69,47 +69,80 @@ By leveraging data from the **Student Affairs department**, the chatbot ensures 
 
 ### Write the requirements document for your project and provide estimation of each user story.
 
-#### User Story 1:
+# Orientation Chatbot - User Stories
 
-**As a [new student], I want to be able to quickly find detailed information about Orientation Week through the university website's chatbot, specifically:**
+## User Story 1: Flexible Event Inquiry
 
-- When I interact with the chatbot, I can input or select a date, for example, `September 2nd, 2024`.
-- The chatbot should, based on the date I input, return a list of all Orientation Week activities for that day, arranged in chronological order.
-- For each activity, the chatbot should clearly display the following information:
-  - **Activity Time:** For example, `9:00 AM - 10:00 AM`
-  - **Activity Name:** For example, `Welcome Ceremony`
-  - **Activity Location:** For example, `Gymnasium`
-  - **Brief Activity Description:** For example, `Chancellor's address, introduction to the faculties`
-  - **Participation Details:** For example, `No registration required`
+**As a [new student], I want to ask the chatbot various types of questions about Orientation Week,  
+so that I can get accurate and relevant information quickly without needing to follow a fixed query format.**
+
+### Acceptance Criteria:
+- The chatbot should understand and respond to different types of user queries related to Orientation Week, including:
+  - **General inquiries:** “Tell me about Orientation Week.” → The chatbot provides an overview.
+  - **Event-based queries:** “What events are happening on Monday?” → The chatbot lists all events for that day.
+  - **Location-based queries:** “Where is the welcome ceremony?” → The chatbot provides location details.
+  - **Time-based queries:** “When does the networking session start?” → The chatbot provides event timing.
+  - **Participation-related queries:** “Do I need to register for the campus tour?” → The chatbot clarifies registration requirements.
+- The chatbot should be able to handle **fuzzy queries**, such as:
+  - “What’s happening this afternoon?” → It should return only **afternoon events**.
+  - “Are there any fun activities today?” → It should suggest **social events**.
+- If an event does not exist or information is missing, the chatbot should provide a **friendly fallback response** instead of leaving the user without an answer.
+- The chatbot should support both **free-text input** and **menu-based selection** for accessibility.
 
 **So that I can understand the arrangements for Orientation Week in advance and make full preparations.**
 
-**Available deliverables:**
+### Available Deliverables:
+- The chatbot supports **free-text user queries** and understands **different question types**.
+- The chatbot provides a **sorted list of events** for the queried date, including:
+  - **Time, name, location, description, participation details (e.g., registration required).**
+- If users request additional event details, the chatbot should provide **expanded descriptions** upon request.
 
-- The chatbot supports users entering or selecting a query date, such as `Orientation Week Monday's events.`
-- The chatbot returns all events for that date, sorted by time, and includes a brief description (e.g., whether registration is required, whether personal identification is needed, etc.).
+---
 
-#### User Story 2:
+## User Story 2: Real-time Event Updates
 
-**As a [new student], I want [the chatbot to provide real-time updates] so that [I can be sure I have the most current information and avoid any problems caused by outdated details].**
+**As a [new student], I want [the chatbot to provide real-time updates]  
+so that [I can be sure I have the most current information and avoid any problems caused by outdated details].**
 
-- To be more specific, the website could learn about the events I'm interested in based on my search history.
-- When the schedules of these events change, the website should be able to promptly send me notifications.
+### Acceptance Criteria:
+- The chatbot should be able to **track events that users have searched for before**.
+- When an event’s **schedule changes**, the chatbot should:
+  - Show the **updated event details** immediately when the user enters the chatbot.
+  - Provide a **notification at the top of the conversation** when updates are available.
+- Users should be able to ask:  
+  - **“Are there any updates to today’s events?”** → The chatbot should return the latest changes.
+- The chatbot should allow users to **opt-in or opt-out of event change notifications**.
+- The chatbot should support **personalized update tracking**, meaning:
+  - If a user has searched for a specific event before, and that event changes,  
+    the chatbot should **proactively notify** them the next time they interact.
 
-**Available deliverables:**
+### Available Deliverables:
+- When event details change, the chatbot automatically notifies affected users.
+- If users explicitly ask about updates, the chatbot responds with **real-time event modifications**.
+- The chatbot keeps track of **user search history** to provide **personalized update notifications**.
 
-- When there are changes to the event schedule, the chatbot will display the updated information as soon as the user enters the chatbot.
-- When users ask questions like `Are there any updates to today's events?` or similar, the chatbot should respond correctly.
-- The chatbot should be able to provide personalized update notifications based on the user's query history. *(For example, when an event the user has searched for changes, the chatbot will display the change information at the top of the conversation as soon as the user interacts with it.)*
+---
 
-#### User Story 3:
+## User Story 3: Multi-turn Conversation & Multilingual Support
 
-**As a [new student], I want the chatbot to [allow users to have multiple rounds of communication and keep a record of those interactions].**
+**As a [new student], I want the chatbot to [allow users to have multiple rounds of communication and keep a record of those interactions],  
+so that I can continue my conversation seamlessly and not have to repeat my queries.**
 
-- In addition, I also hope that the chatbot can **answer in the language the user communicates** in so that the user does not have difficulty reading the message.
+### Acceptance Criteria:
+- The chatbot should retain **conversation history within the current session**.
+- If a user **leaves and returns to the chatbot**, it should be able to:
+  - Recall the last **few interactions** and allow users to **continue where they left off**.
+- Users should be able to reference previous parts of the conversation:  
+  - *User:* “What about Tuesday’s events?”  
+  - *Chatbot:* Should infer context from the previous query instead of requiring the user to repeat full details.
+- The chatbot should automatically detect the user’s **language preference**.
+- If the user **switches languages mid-conversation**, the chatbot should **adapt accordingly**.
+- The chatbot should support **English, Mandarin, and other university-supported languages**.
 
-**Available deliverables:**
+### Available Deliverables:
+- The chatbot retains **short-term conversation history** (only within the session).
+- Users can **continue conversations without needing to restart queries**.
+- The chatbot **automatically detects and adjusts to the user's language**.
 
-- The chatbot remembers previous questions or commands in the current session. If the user returns to the chatbot later, the chatbot can review and continue the previous conversation.
-- The conversation history can be temporarily stored *(only within the current session).*
-- The chatbot can automatically detect the language used by the user, and if the user switches languages during the conversation, the chatbot should be able to adapt automatically.
+---
+
