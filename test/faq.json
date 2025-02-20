@@ -4,9 +4,37 @@
       "question": "What is the schedule for orientation day?",
       "answer": "The orientation schedule is available at https://www.jcu.edu.sg/courses-and-study/orientation."
     },
+
     {
       "question": "Where can I collect my student ID?",
       "answer": "Student ID can be collected at the Student Affairs Office, Block A, Room 102."
+    },
+
+    {
+      "question": "When is the TR1S 2025 Orientation Program?",
+      "answer": "The Orientation Program is taking place from 6 Jan - 17 Jan."
+    },
+
+    {
+      "question": "What can you expect from orientation?",
+      "answer": "Course Welcome and Academic Advising: Meet the faculty and staff members, and learn more about your course of study.\nJCU 101: Find out more about the various resources available to you to get a head-start on campus life.\nDigiLearn Workshops: Learn to navigate JCU's virtual learning environment — LearnJCU.\nClubs Introduction: Discover the wide range of clubs James Cook University has to offer!\nMeet Your Teachers Workshops: Meet your teachers to find out more about the lessons."
+    },
+
+
+
+    {
+      "question": "Before Orientation Week",
+      "answer": "✔Read up on more about Singapore prior departing to Singapore. \n✔Sign Letter of Offer, Student Contract, Advisory Note, and other required Admissions Forms. Make a note of the payment due dates and the various payment methods. \n✔Ensure that all Offer Condition are met prior to course commencement (if applicable).\n✔Attend the Reporting session with the Marketing and Admissions Office.\n✔Attend the Verification of Document (Individual) session.\n✔Ensure you are Digital Ready for online and blended learning.\n✔Complete your Student Pass Formalities (if applicable)\n✔Set up your password on JCU GetStarted with your 8 digit Student ID. You can find your Student ID on the top right-hand corner of your Letter of Offer. Contact the Admissions Office for more enquiries.\n✔Log into your JCU Student Email account and check messages regularly. This is your official communication channel with any staff from JCU.\n✔Download the JCU Calendars to view important dates. Print them off or note the dates in your diary."
+    },
+
+    {
+      "question": "Reporting and Verification Session",
+      "answer": "All students are required to attend reporting and verification session conducted by our University staff.\n\nPlease arrive 10 minutes before the start of the session to check in your attendance online. Please kindly use the checklist below to prepare in advance the documents which you have submitted to the University during your application.\n\nIt is important that you bring along the original documents to ensure a fast and smooth reporting process.\nSigned Advisory Note, Letter of Offer and Student Contract\nNRIC / Passport and ICA Embarkation Card / Identification Cards\nBirth Certificates for International Students\nAcademic Certificates and Transcripts i.e. Year 12/Diploma/Bachelor Degree etc.\nAcademic Course Completion Letter (if applicable)\nProof of English Language Proficiency (i.e. IELTS/TOEFL/PTE/Medium of Instruction letter)\nDeed Poll on Name Change (if applicable)\nOther Miscellaneous Documents (if any)\n"
+    },
+
+    {
+      "question": "Reporting Schedule",
+      "answer": "https://www.jcu.edu.sg/__data/assets/pdf_file/0004/2221564/Admissions-Key-Dates-TR1S-2025-Jan-Intake.pdf"
     }
   ]
 }
