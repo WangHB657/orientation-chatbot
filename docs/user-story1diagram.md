@@ -142,4 +142,4 @@ The chatbot should support both:
 
 
 ## Sequence Diagram
-![User Story 1 Sequence Diagram](../image/userstorysequence1.drawio.png)
+![User Story 1 Sequence Diagram](../image/userstorysequence1(2.27).drawio.png)
