@@ -16,14 +16,14 @@ st.sidebar.title("💬 Chat History")
 for chat_id, chat in st.session_state.chats.items():
     if st.sidebar.button(chat["title"][:30], key=chat_id):  # 只显示前30个字符作为标题
         st.session_state.current_chat_id = chat_id  # 切换到该聊天
-        st.rerun()
+        st.experimental_rerun()
 
 # 创建新聊天按钮
 if st.sidebar.button("➕ Create New Chat"):
     new_chat_id = str(uuid.uuid4())  # 生成唯一聊天 ID
     st.session_state.chats[new_chat_id] = {"title": "New Chat", "messages": [], "cache": {}}  # 新对话的缓存
     st.session_state.current_chat_id = new_chat_id  # 切换到新对话
-    st.rerun()
+    st.experimental_rerun()
 
 # 如果没有选择聊天，就创建一个新的
 if not st.session_state.current_chat_id:
@@ -47,7 +47,10 @@ query = st.chat_input("Type your message...")
 
 # 处理用户输入
 if query:
-    chat["messages"].append({"role": "user", "content": query})  # 记录用户消息
+    # **立即显示用户输入**
+    chat["messages"].append({"role": "user", "content": query})
+    with st.chat_message("user"):
+        st.markdown(query)
 
     # **优化：如果问题已被问过，直接返回缓存结果**
     if query in chat["cache"]:
@@ -67,7 +70,12 @@ if query:
         except requests.exceptions.RequestException as e:
             bot_reply = f"Request failed: {str(e)}"
 
-    # 记录 AI 回复
+    # **立即显示 AI 回复**
     chat["messages"].append({"role": "assistant", "content": bot_reply})
-    st.rerun()  # **刷新 UI 以显示更新**
+    with st.chat_message("assistant"):
+        st.markdown(bot_reply)
+
+    # **延迟刷新**
+    st.rerun()  # 确保整个对话流正常更新
+
 
