@@ -1,81 +1,95 @@
 import streamlit as st
 import requests
-import uuid  # 生成唯一会话 ID
+import uuid
 
-# 设置页面标题和图标
+# 设置页面配置
 st.set_page_config(page_title="JCU Orientation Chatbot", page_icon="🎓", layout="wide")
 
+
 # 初始化会话状态
-if "chats" not in st.session_state:
-    st.session_state.chats = {}  # 存储多个聊天历史 {"chat_id": {"title": "...", "messages": [...] }}
-if "current_chat_id" not in st.session_state:
-    st.session_state.current_chat_id = None  # 当前选中的聊天 ID
+def init_session():
+    if "chats" not in st.session_state:
+        st.session_state.chats = {}  # keep the history
+    if "current_chat_id" not in st.session_state:
+        st.session_state.current_chat_id = None  # chat ID
 
-# 侧边栏 - 显示聊天历史
-st.sidebar.title("💬 Chat History")
-for chat_id, chat in st.session_state.chats.items():
-    if st.sidebar.button(chat["title"][:30], key=chat_id):  # 只显示前30个字符作为标题
-        st.session_state.current_chat_id = chat_id  # 切换到该聊天
-        st.experimental_rerun()
 
-# 创建新聊天按钮
-if st.sidebar.button("➕ Create New Chat"):
-    new_chat_id = str(uuid.uuid4())  # 生成唯一聊天 ID
-    st.session_state.chats[new_chat_id] = {"title": "New Chat", "messages": [], "cache": {}}  # 新对话的缓存
-    st.session_state.current_chat_id = new_chat_id  # 切换到新对话
-    st.experimental_rerun()
+init_session()
 
-# 如果没有选择聊天，就创建一个新的
-if not st.session_state.current_chat_id:
+
+# Create new chat
+def create_new_chat():
     new_chat_id = str(uuid.uuid4())
     st.session_state.chats[new_chat_id] = {"title": "New Chat", "messages": [], "cache": {}}
     st.session_state.current_chat_id = new_chat_id
 
-# 选中的聊天
+
+# display the history
+st.sidebar.title("💬 Chat History")
+for chat_id, chat in st.session_state.chats.items():
+    if st.sidebar.button(chat["title"][:30], key=chat_id):  # 只显示前30个字符
+        st.session_state.current_chat_id = chat_id
+        st.rerun()
+
+# The creation new chat bottom
+if st.sidebar.button("➕ Create New Chat"):
+    create_new_chat()
+    st.rerun()
+
+if not st.session_state.current_chat_id:
+    create_new_chat()
+
+# Catch the chat
 chat = st.session_state.chats[st.session_state.current_chat_id]
 
-# 显示聊天标题
+# display chat title (Not finish)
 st.title(f"🎓 {chat['title']}")
 
-# 显示聊天记录
+# display chat history
 for msg in chat["messages"]:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# 用户输入
-query = st.chat_input("Type your message...")
 
-# 处理用户输入
-if query:
-    # **立即显示用户输入**
+# user input solve
+def handle_user_input(query):
+    if not query.strip():
+        return
+
+    # display user input in chat board
     chat["messages"].append({"role": "user", "content": query})
     with st.chat_message("user"):
         st.markdown(query)
 
-    # **优化：如果问题已被问过，直接返回缓存结果**
+    # New
     if query in chat["cache"]:
         bot_reply = chat["cache"][query]
     else:
-        try:
-            # 发送请求到 FastAPI
-            response = requests.get(f"http://127.0.0.1:8000/chatbot/?query={query}")
-            if response.status_code != 200:
-                bot_reply = f"Server Error: {response.status_code}"
-            else:
-                data = response.json()
-                bot_reply = data.get("response", "Error: No response received.")
+        bot_reply = fetch_bot_response(query)
+        chat["cache"][query] = bot_reply
 
-            # 存入缓存
-            chat["cache"][query] = bot_reply
-        except requests.exceptions.RequestException as e:
-            bot_reply = f"Request failed: {str(e)}"
-
-    # **立即显示 AI 回复**
+    # display reply
     chat["messages"].append({"role": "assistant", "content": bot_reply})
     with st.chat_message("assistant"):
         st.markdown(bot_reply)
 
-    # **延迟刷新**
-    st.rerun()  # 确保整个对话流正常更新
+    st.rerun()  # update communication
 
+
+def fetch_bot_response(query):
+    """ use FAST AI reply"""
+    try:
+        response = requests.get(f"http://127.0.0.1:8000/chatbot/?query={query}")
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("response", "⚠️ No valid response received.")
+        return f"⚠️ Server Error: {response.status_code}"
+    except requests.exceptions.RequestException as e:
+        return f"⚠️ Request failed: {str(e)}"
+
+
+# get user input (display)
+query = st.chat_input("Type your message...")
+if query:
+    handle_user_input(query)
 
