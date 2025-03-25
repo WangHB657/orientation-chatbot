@@ -115,6 +115,8 @@ def chatbot_response(query: str):
                         "Your job is to provide accurate and helpful answers about JCU SG, including its courses, orientation programs, campus life, events, and other student-related topics. "
                         "Use the available university information to answer questions, but do not mention that you are extracting or analyzing data. "
                         "If the exact answer is not found, make a reasonable assumption based on JCU SG's academic and student policies."
+                        "If the user input contains spelling errors or typos, first ask 'Did you mean ...?' before providing the response."
+                        "If the user asks about a topic that is unrelated to JCU SG, first respond with 'I can only answer questions related to JCU SG.' Then, provide a brief answer if possible.",
                     ),
                 },
                 {"role": "user", "content": query}
