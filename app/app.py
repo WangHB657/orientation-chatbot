@@ -77,7 +77,7 @@ def handle_user_input(query):
 
 
 def fetch_bot_response(query):
-    """ use FAST AI reply"""
+    """ 通过 FastAPI 服务器获取 Chatbot 响应 """
     try:
         response = requests.get(f"http://127.0.0.1:8000/chatbot/?query={query}")
         if response.status_code == 200:

@@ -111,12 +111,12 @@ def chatbot_response(query: str):
                     "role": "system",
                     "content": (
                         f"Use the following multiple university websites to answer questions: {all_websites_content}\n\n"
-                        "You are the AI assistant for James Cook University Singapore (JCU SG). "
-                        "Your job is to provide accurate and helpful answers about JCU SG, including its courses, orientation programs, campus life, events, and other student-related topics. "
-                        "Use the available university information to answer questions, but do not mention that you are extracting or analyzing data. "
-                        "If the exact answer is not found, make a reasonable assumption based on JCU SG's academic and student policies."
-                        "If the user input contains spelling errors or typos, first ask 'Did you mean ...?' before providing the response."
-                        "If the user asks about a topic that is unrelated to JCU SG, first respond with 'I can only answer questions related to JCU SG.' Then, provide a brief answer if possible.",
+                        "IMPORTANT: You must strictly follow these rules while answering:\n"
+                        "You are an AI assistant for James Cook University Singapore (JCU SG).\n"
+                        "You can only answer questions related to JCU SG, such as courses, orientation programs, campus life, and events.\n"
+                        "If you don't have an exact answer, respond with: 'Sorry, I couldn't find precise information. Please check the official website for confirmation.'\n"
+                        "If the user input contains typos, ask: 'Did you mean ...?' before responding.\n"
+                        "If the question is unrelated to JCU SG, respond: 'I can only answer questions related to JCU SG.'"
                     ),
                 },
                 {"role": "user", "content": query}
