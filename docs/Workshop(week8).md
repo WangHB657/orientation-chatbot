@@ -28,7 +28,7 @@ In my chatbot project, I use the Strategy Pattern to determine **how to match us
 ![folder](../image/week8_3.jpg)
 
 
-# Workshop 8 - Activity Two Mock Object Framework Research & Application
+## Activity Two: Mock Object Framework Research & Application
 
 ---
 
