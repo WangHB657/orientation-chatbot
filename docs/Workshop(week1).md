@@ -30,12 +30,14 @@ By leveraging data from the **Student Affairs department**, the chatbot ensures 
 
 
 ## Technology Stack
-- **Frontend:** HTML, CSS, JavaScript (React.js)
-- **Backend:** Node.js with Express
-- **Chatbot Integration:** OpenAI ChatGPT API
-- **Database:** MongoDB
-- **Deployment:** Heroku or AWS
-- **Version Control:** GitHub
+
+- **Frontend:** Python Streamlit (for chatbot UI)
+- **Backend:** FastAPI (Python REST API)
+- **Chatbot Integration:** OpenAI GPT API (via openai-python SDK)
+- **Data Source:** Static JSON file (`faq.json`) for FAQ matching
+- **Testing:** pytest, requests-mock, Selenium
+- **Deployment:** Localhost (for development), can be deployed to Render / Railway / AWS
+- **Version Control:** Git & GitHub
 
 
 ## Project Management
