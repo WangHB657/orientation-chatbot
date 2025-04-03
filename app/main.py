@@ -3,17 +3,20 @@ import json
 import openai
 import requests
 from bs4 import BeautifulSoup
-import re
 from chatbot import Chatbot
 from strategies.exact import ExactMatchStrategy
 from strategies.keyword import KeywordMatchStrategy
 from strategies.fuzzy import FuzzyMatchStrategy
+import numpy as np
 from fuzzywuzzy import process
 
 app = FastAPI()
 
 
-# 加载 FAQ 数据
+# ----------------------------
+# ✅ FAQ数据
+# ----------------------------
+
 def load_faq():
     with open("faq.json", "r", encoding="utf-8") as f:
         return json.load(f)["faq"]
@@ -21,10 +24,16 @@ def load_faq():
 
 faq_data = load_faq()
 
-# OpenAI API Key
+# ----------------------------
+# ✅ API KEY
+# ----------------------------
+
 openai.api_key = ""
 
-# 学校网站列表
+# ----------------------------
+# ✅ 网站
+# ----------------------------
+
 SCHOOL_WEBSITES = [
     "https://www.jcu.edu.sg/courses-and-study/orientation",
     "https://www.jcu.edu.sg/courses-and-study/orientation/before-orientation/",
@@ -35,88 +44,155 @@ SCHOOL_WEBSITES = [
 ]
 
 
-def fetch_website_text(url):
-    try:
-        response = requests.get(url, timeout=10)
-        if response.status_code != 200:
-            return f"❌ Cannot access {url}, status code: {response.status_code}"
+# ----------------------------
+# ✅ 爬虫
+# ----------------------------
 
+def fetch_website_text(url):
+    headers = {"User-Agent": "Mozilla/5.0"}
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code != 200:
+            return ""
         soup = BeautifulSoup(response.text, "html.parser")
         for tag in soup(["script", "style", "nav", "footer", "aside"]):
             tag.extract()
         main_content = soup.find("main") or soup.find("article") or soup.find("section")
         text_content = main_content.get_text(separator="\n", strip=True) if main_content else soup.get_text(
             separator="\n", strip=True)
-        return f"🔹 Source: {url}\n{text_content}"
-    except requests.RequestException as e:
-        return f"❌ Failed to fetch {url}: {str(e)}"
+        return text_content
+    except requests.RequestException:
+        return ""
 
 
 def fetch_multiple_websites():
     return "\n\n".join(fetch_website_text(url) for url in SCHOOL_WEBSITES)
 
 
-def get_faq_response(query: str) -> str:
+# ----------------------------
+# ✅ FAQ 检索
+# ----------------------------
+
+def search_faq(query, top_k=3):
     bot = Chatbot(ExactMatchStrategy())
-    response = bot.get_response(query, faq_data)
-    if response:
-        return response
+    matched_faqs = []
 
-    bot.set_strategy(KeywordMatchStrategy())
-    response = bot.get_response(query, faq_data)
-    if response:
-        return response
+    for strategy in [ExactMatchStrategy(), KeywordMatchStrategy(), FuzzyMatchStrategy()]:
+        bot.set_strategy(strategy)
+        response = bot.get_response(query, faq_data)
+        if response:
+            for faq in faq_data:
+                if response == faq["answer"]:
+                    matched_faqs.append(faq)
+                    break
+        if len(matched_faqs) >= top_k:
+            break
 
-    bot.set_strategy(FuzzyMatchStrategy())
-    response = bot.get_response(query, faq_data)
-    if response:
-        return response
-
-    return None
+    return matched_faqs
 
 
-def extract_relevant_content(user_query, content):
-    paragraphs = content.split("\n")
-    best_matches = process.extract(user_query, paragraphs, limit=5)
-    lists = "\n".join(p[0] for p in best_matches if any(symbol in p[0] for symbol in ["•", "✔", "-", "*"]))
-    normal_text = "\n".join(p[0] for p in best_matches if p[1] > 60)
-    return lists + "\n" + normal_text
+# ----------------------------
+# ✅ Embedding 检索函数
+# ----------------------------
 
+
+# 读取 embedding 后的 FAQ
+with open("faq_embedded.json", "r", encoding="utf-8") as f:
+    faq_data = json.load(f)["faq"]
+
+
+def get_query_embedding(text):
+    response = openai.embeddings.create(
+        model="text-embedding-ada-002",
+        input=text
+    )
+    return np.array(response.data[0].embedding)
+
+
+def cosine_similarity(vec1, vec2):
+    return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+
+
+def search_faq_by_embedding(query, top_k=3):
+    query_embedding = get_query_embedding(query)
+    scored = []
+    for faq in faq_data:
+        sim = cosine_similarity(query_embedding, np.array(faq["embedding"]))
+        scored.append((sim, faq))
+    scored.sort(reverse=True, key=lambda x: x[0])
+    return [faq for sim, faq in scored[:top_k] if sim > 0.7]
+
+
+# ----------------------------
+# ✅ Prompt Template
+# ----------------------------
+
+prompt_template = '''
+You are an Orientation Assistant Bot for James Cook University Singapore.
+
+You will answer student questions using the following FAQ knowledge:
+
+{faq_context}
+
+When answering:
+- Be friendly and helpful.
+- Integrate relevant FAQ information naturally.
+- Do not just copy FAQ, try to answer like a real person.
+- Only answer questions related to JCU SG.
+- If no information is available, say: "Sorry, I couldn't find precise information. Please check the official website."
+
+Question: {user_question}
+
+Answer:
+'''
+
+
+# ----------------------------
+# ✅ FAQ context 构造
+# ----------------------------
+
+def build_faq_context(faqs):
+    if not faqs:
+        return "No related FAQs found."
+    return "\n\n".join([f"Q: {faq['question']}\nA: {faq['answer']}" for faq in faqs])
+
+
+# ----------------------------
+# ✅ GPT 生成回答【已改为 openai >=1.0 的新写法】
+# ----------------------------
+
+def generate_answer(user_query, faq_matches, web_content):
+    faq_context = build_faq_context(faq_matches)
+    prompt = prompt_template.format(faq_context=faq_context, user_question=user_query)
+
+    completion = openai.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": user_query}
+        ]
+    )
+
+    return completion.choices[0].message.content.strip()
+
+
+# ----------------------------
+# ✅ API Endpoint
+# ----------------------------
 
 @app.get("/chatbot/")
 def chatbot_response(query: str):
     try:
-        response = get_faq_response(query)
-        if response:
-            return {"response": response}
+        # ✅ 改成 embedding 检索
+        faq_matches = search_faq_by_embedding(query)
 
-        all_websites_content = fetch_multiple_websites()
-        if "❌" in all_websites_content or len(all_websites_content) < 50:
-            return {"error": "Failed to crawl websites or insufficient content."}
+        web_content = fetch_multiple_websites()
+        if not web_content:
+            web_content = "No valid web content."
 
-        relevant_content = extract_relevant_content(query, all_websites_content)
-        if not relevant_content or len(relevant_content) < 30:
-            relevant_content = "No directly relevant information is available."
+        final_answer = generate_answer(query, faq_matches, web_content)
+        return {"response": final_answer}
 
-        completion = openai.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        f"Use the following multiple university websites to answer questions: {all_websites_content}\n\n"
-                        "IMPORTANT: You must strictly follow these rules while answering:\n"
-                        "You are an AI assistant for James Cook University Singapore (JCU SG).\n"
-                        "You can only answer questions related to JCU SG, such as courses, orientation programs, campus life, and events.\n"
-                        "If you don't have an exact answer, respond with: 'Sorry, I couldn't find precise information. Please check the official website for confirmation.'\n"
-                        "If the question is unrelated to JCU SG, respond: 'I can only answer questions related to JCU SG.'"
-                    ),
-                },
-                {"role": "user", "content": query}
-            ]
-        )
-
-        return {"response": completion.choices[0].message.content}
     except openai.AuthenticationError:
         return {"error": "Invalid OpenAI API key."}
     except openai.RateLimitError:

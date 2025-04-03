@@ -1,29 +1,320 @@
 {
-  "faq": [
-    {
-      "question": "What is the schedule for orientation day?",
-      "answer": "The orientation schedule is available at https://www.jcu.edu.sg/courses-and-study/orientation."
-    },
-
-    {
-      "question": "Where can I collect my student ID?",
-      "answer": "Student ID can be collected at the Student Affairs Office, Block A, Room 102."
-    },
-
-    {
-      "question": "When is the TR1S 2025 Orientation Program?",
-      "answer": "The Orientation Program is taking place from 6 Jan - 17 Jan."
-    },
-
-
-    {
-      "question": "Reporting and Verification Session",
-      "answer": "All students are required to attend reporting and verification session conducted by our University staff.\n\nPlease arrive 10 minutes before the start of the session to check in your attendance online. Please kindly use the checklist below to prepare in advance the documents which you have submitted to the University during your application.\n\nIt is important that you bring along the original documents to ensure a fast and smooth reporting process.\nSigned Advisory Note, Letter of Offer and Student Contract\nNRIC / Passport and ICA Embarkation Card / Identification Cards\nBirth Certificates for International Students\nAcademic Certificates and Transcripts i.e. Year 12/Diploma/Bachelor Degree etc.\nAcademic Course Completion Letter (if applicable)\nProof of English Language Proficiency (i.e. IELTS/TOEFL/PTE/Medium of Instruction letter)\nDeed Poll on Name Change (if applicable)\nOther Miscellaneous Documents (if any)\n"
-    },
-
-    {
-      "question": "Reporting Schedule",
-      "answer": "https://www.jcu.edu.sg/__data/assets/pdf_file/0004/2221564/Admissions-Key-Dates-TR1S-2025-Jan-Intake.pdf"
-    }
-  ]
+    "faq": [
+        {
+            "question": "When is the TR2 2025 Orientation Program?",
+            "answer": "The Orientation Program is taking place from 5 May \u2013 16 May.",
+            "category": "Before Orientation",
+            "tags": [
+                "orientation",
+                "schedule"
+            ],
+            "id": 1
+        },
+        {
+            "question": "What can I expect during the Orientation Program?",
+            "answer": "You can expect Course Welcome and Academic Advising, JCU 101, DigiLearn Workshops, Clubs Introduction, and Meet Your Teachers Workshops.",
+            "category": "During Orientation",
+            "tags": [
+                "orientation",
+                "activities"
+            ],
+            "id": 2
+        },
+        {
+            "question": "What should I do before Orientation Week?",
+            "answer": "Before Orientation Week, complete the following: read about Singapore, sign required documents, ensure offer conditions are met, attend Reporting and Verification sessions, be digitally ready, complete Student Pass formalities, set up your password on JCU GetStarted, access your student email, and download JCU Calendars.",
+            "category": "Before Orientation",
+            "tags": [
+                "preparation",
+                "checklist"
+            ],
+            "id": 3
+        },
+        {
+            "question": "What should I do during Orientation Week?",
+            "answer": "During Orientation Week, attend Course Welcome, JCU 101, DigiLearn Workshops, Meet Your Teachers Workshops, set up JCU GetStarted if not done, log into LearnJCU, access Student IT Essentials, log into eStudent and StudentFirst, make necessary payments, register for AccessAbility Services if needed, and explore campus services and transport options.",
+            "category": "During Orientation",
+            "tags": [
+                "orientation",
+                "checklist"
+            ],
+            "id": 4
+        },
+        {
+            "question": "What should I do after Orientation Week?",
+            "answer": "After Orientation Week, review Orientation Program materials, attend workshops, read Subject Outlines, check timetables, keep track of important dates, visit the Learning Centre, collect your Student ID card, check your student email regularly, and get involved with interest groups and communities.",
+            "category": "After Orientation",
+            "tags": [
+                "post-orientation",
+                "checklist"
+            ],
+            "id": 5
+        },
+        {
+            "question": "What are the important tasks during Academic Week 1?",
+            "answer": "Read Subject Outlines, check timetables, download calendars, visit the Learning Centre, collect your Student ID card, and check your student email regularly.",
+            "category": "After Orientation",
+            "tags": [
+                "academic",
+                "week1"
+            ],
+            "id": 6
+        },
+        {
+            "question": "What are the important tasks during Academic Week 2?",
+            "answer": "Bookmark the JCU Current Students page, check assignment due dates, consult the Learning Centre for writing guides, email your Student Ambassador with questions, and participate in interest groups.",
+            "category": "After Orientation",
+            "tags": [
+                "academic",
+                "week2"
+            ],
+            "id": 7
+        },
+        {
+            "question": "What should I remember during Academic Week 3?",
+            "answer": "Be aware of the upcoming Census Date to avoid academic or financial penalties if you wish to withdraw from subjects.",
+            "category": "After Orientation",
+            "tags": [
+                "academic",
+                "week3",
+                "census"
+            ],
+            "id": 8
+        },
+        {
+            "question": "What is the Reporting and Verification Session?",
+            "answer": "All students must attend a reporting and verification session conducted by university staff. Arrive 10 minutes early and bring original documents such as signed advisory note, letter of offer, student contract, identification documents, academic certificates, proof of English proficiency, and other relevant documents.",
+            "category": "Before Orientation",
+            "tags": [
+                "reporting",
+                "verification"
+            ],
+            "id": 9
+        },
+        {
+            "question": "How can I prepare for studying at JCU?",
+            "answer": "You should arrange accommodation, complete medical check-ups and student pass formalities, collect your Student ID card, activate and check your JCU email regularly, seek enrolment help via eStudent or Student Hub, access your timetable via StudentFirst, and get familiar with LearnJCU and the digital learning environment.",
+            "category": "Before Orientation",
+            "tags": [
+                "preparation",
+                "study"
+            ],
+            "id": 10
+        },
+        {
+            "question": "What is LearnJCU?",
+            "answer": "LearnJCU is the university's online academic suite, providing access to teaching materials, communication with lecturers, information about assessments, and other essential academic resources.",
+            "category": "General Info",
+            "tags": [
+                "LearnJCU",
+                "platform"
+            ],
+            "id": 11
+        },
+        {
+            "question": "How do I contact important offices at JCU Singapore?",
+            "answer": "You can contact various offices such as Academic Planning, Accommodation, Attendance Monitoring, Counselling, Enrolments, Examinations & Graduation, Finance, IT Help Desk, Interest Groups, Learning Centre, Library Services, Psychology Clinic, Student Affairs, Student Careers, and Student Feedback through their emails, phone numbers, or by visiting them on campus. Refer to the official contact list for detailed information.",
+            "category": "General Info",
+            "tags": [
+                "contacts",
+                "help"
+            ],
+            "id": 12
+        },
+        {
+            "question": "What are the Highs and Lows of University Life?",
+            "answer": "Starting university can bring excitement and challenges. It's normal to feel a mix of emotions, especially during assessment periods. Remember that you are not alone; many students share similar experiences. Connect with classmates to share your feelings and support each other.",
+            "category": "General Info",
+            "tags": [
+                "student life",
+                "mental health"
+            ],
+            "id": 13
+        },
+        {
+            "question": "What are the differences between university and previous education?",
+            "answer": "University emphasizes independent learning. Students manage their own study schedules, are responsible for meeting deadlines, and must seek help when needed. Assessment is less frequent but covers more material, and feedback is limited compared to previous schooling.",
+            "category": "General Info",
+            "tags": [
+                "university",
+                "learning differences"
+            ],
+            "id": 14
+        },
+        {
+            "question": "What is the Admissions Reporting Schedule for the January 2025 Intake (TR1S 2025)?",
+            "answer": "The Admissions Reporting Schedule includes: \n- 06 & 07 January 2025: Medical Check-Up & Student\u2019s Pass Formalities for international students at C2-13.\n- 08 January 2025: Reporting Day for Local Singapore Full/Part-Time and East Asia (China Session 1) students, Welcome Bag Collection at C1-09, and Fingerprint Registration.\n- 09 January 2025: Reporting Day for IndoChina, Local Transfer, Japan, Korea, Mongolia, Europe, Student Exchange, Central Asia, South Asia, Southeast Asia, and East Asia (China Session 2) students. Welcome Bag Collection and Fingerprint Registration will also be held at C1-09.",
+            "category": "Before Orientation",
+            "tags": [
+                "admissions",
+                "reporting",
+                "TR1S 2025"
+            ],
+            "id": 15
+        },
+        {
+            "question": "Where and when is the Medical Check-Up & Student\u2019s Pass Formalities for the January 2025 Intake?",
+            "answer": "The Medical Check-Up & Student\u2019s Pass Formalities will be held on 06 & 07 January 2025 from 9 am to 3 pm at C2-13. This is mandatory for international students.",
+            "category": "Before Orientation",
+            "tags": [
+                "medical checkup",
+                "student pass",
+                "TR1S 2025"
+            ],
+            "id": 16
+        },
+        {
+            "question": "What is the Welcome Bag Collection and Fingerprint Registration process for the January 2025 Intake?",
+            "answer": "Welcome Bag Collection and Fingerprint Registration will take place on 08 and 09 January 2025 at C1-09 Student Hub. It is required for all local students and international students who already have a valid Student\u2019s Pass.",
+            "category": "Before Orientation",
+            "tags": [
+                "welcome bag",
+                "fingerprint registration",
+                "TR1S 2025"
+            ],
+            "id": 17
+        },
+        {
+            "question": "What should I do on 6 January 2025?",
+            "answer": "International students are required to attend the Medical Check-Up and Student\u2019s Pass Formalities.\n\nTime: 9 AM \u2013 3 PM\nLocation: C2-13.",
+            "category": "Before Orientation",
+            "tags": [
+                "schedule",
+                "medical checkup",
+                "student pass",
+                "2025-01-06"
+            ],
+            "id": 18
+        },
+        {
+            "question": "What should I do on 7 January 2025?",
+            "answer": "International students are required to attend the Medical Check-Up and Student\u2019s Pass Formalities.\n\nTime: 9 AM \u2013 3 PM\nLocation: C2-13.",
+            "category": "Before Orientation",
+            "tags": [
+                "schedule",
+                "medical checkup",
+                "student pass",
+                "2025-01-07"
+            ],
+            "id": 19
+        },
+        {
+            "question": "What should I do on 8 January 2025?",
+            "answer": "Reporting Day (Session 1) for:\n- Local Singapore Full/Part-Time students\n- East Asia students (China Session 1)\n\nAdditional Activities:\n- Welcome Bag Collection\n- Fingerprint Registration (for local students and international students with a valid Student\u2019s Pass)\n\nTime: 9 AM \u2013 12 PM\nLocation: C2-14 / C2-15 / C1-09.",
+            "category": "Before Orientation",
+            "tags": [
+                "schedule",
+                "reporting",
+                "welcome bag",
+                "fingerprint registration",
+                "2025-01-08"
+            ],
+            "id": 20
+        },
+        {
+            "question": "What should I do on 9 January 2025?",
+            "answer": "Reporting Day (Session 2) for:\n- IndoChina: Vietnam, Myanmar, Laos, Cambodia, Thailand\n- Local Transfer + Japan, Korea, Mongolia\n- Europe, Others, Student Exchange & Intercampus Exchange\n- Central Asia: Kazakhstan, Uzbekistan, Russia\n- South Asia: India, Sri Lanka, Maldives\n- Southeast Asia: Indonesia, Malaysia, Brunei, Middle East\n- East Asia: China (Session 2)\n\nAdditional Activities:\n- Welcome Bag Collection\n- Fingerprint Registration (for local students and international students with a valid Student\u2019s Pass)\n\nTime: 9 AM \u2013 12 PM\nLocation: C2-14 / C2-15 / C1-09.",
+            "category": "Before Orientation",
+            "tags": [
+                "schedule",
+                "reporting",
+                "welcome bag",
+                "fingerprint registration",
+                "2025-01-09"
+            ],
+            "id": 21
+        },
+        {
+            "question": "What is the Reporting and Verification Session and what documents should I prepare?",
+            "answer": "All students are required to attend the Reporting and Verification Session conducted by JCU staff. Please arrive at least 10 minutes early to check-in online. Prepare the following original documents:\n- Signed Advisory Note, Letter of Offer, and Student Contract\n- NRIC/Passport and ICA Embarkation Card/Identification Cards\n- Birth Certificates (International Students only)\n- Academic Certificates and Transcripts (e.g., Year 12, Diploma, Bachelor Degree)\n- Academic Course Completion Letter (if applicable)\n- Proof of English Proficiency (IELTS/TOEFL/PTE/Medium of Instruction letter)\n- Deed Poll for Name Change (if applicable)\n- Other miscellaneous documents (if any).",
+            "category": "Before Orientation",
+            "tags": [
+                "reporting",
+                "verification",
+                "required documents"
+            ],
+            "id": 22
+        },
+        {
+            "question": "How can international students prepare for living in Singapore?",
+            "answer": "International students can get help from Pre-Arrival Services for finding suitable accommodation through JCU's appointed providers. Contact Pre-Arrival Services for details. Additionally, students should complete medical check-ups and student pass formalities, which will be arranged by the Campus Activities Office.",
+            "category": "Before Orientation",
+            "tags": [
+                "accommodation",
+                "medical checkup",
+                "student pass"
+            ],
+            "id": 23
+        },
+        {
+            "question": "Why is the JCU Student ID Card important and how can I get it?",
+            "answer": "The Student ID Card is essential for students studying physically in Singapore. It is needed for campus access, borrowing library materials, attending exams, reserving facilities, and enjoying discounts. The card can be collected after receiving an email from the Student Affairs department.",
+            "category": "Before Orientation",
+            "tags": [
+                "student ID",
+                "campus access"
+            ],
+            "id": 24
+        },
+        {
+            "question": "How do I access and use my JCU student email?",
+            "answer": "Your JCU student email is the official communication channel with university staff. Make sure to check it regularly for information on classes, enrolment, fees, and academic progress. If you do not have an account, use JCU GetStarted to create one with your 8-digit Student ID (found on your Student Contract). Contact the Admissions Office if you have issues.",
+            "category": "Before Orientation",
+            "tags": [
+                "student email",
+                "communication"
+            ],
+            "id": 25
+        },
+        {
+            "question": "How can I get help with enrolment?",
+            "answer": "You can view enrolment information via the My Study Plan tab on eStudent. For assistance, visit the Student Hub or contact the Enrolments Office.",
+            "category": "Before Orientation",
+            "tags": [
+                "enrolment",
+                "student hub"
+            ],
+            "id": 26
+        },
+        {
+            "question": "How do I check my timetable and handle timetable clashes?",
+            "answer": "You can access your timetable by logging into StudentFirst under 'My Timetable'. For timetable clashes or inquiries, contact the Academic Planning team.",
+            "category": "Before Orientation",
+            "tags": [
+                "timetable",
+                "academic planning"
+            ],
+            "id": 27
+        },
+        {
+            "question": "What is LearnJCU and how is it used?",
+            "answer": "LearnJCU is JCU's online academic platform. It provides access to learning materials, communication with lecturers, assessment details, and more. Use it regularly to stay informed about your subjects.",
+            "category": "Before Orientation",
+            "tags": [
+                "LearnJCU",
+                "online learning"
+            ],
+            "id": 28
+        },
+        {
+            "question": "How do I ensure digital readiness for studying at JCU Singapore?",
+            "answer": "Follow JCU's general guidelines and minimum system requirements for online and blended learning. Ensure your devices meet these requirements to have a smooth learning experience. Visit JCU's website for detailed guidelines.",
+            "category": "Before Orientation",
+            "tags": [
+                "digital readiness",
+                "online learning"
+            ],
+            "id": 29
+        },
+        {
+            "question": "Where can I find contact information for important JCU departments?",
+            "answer": "Contact details for Academic Planning, Accommodation, Attendance Monitoring, Counselling, Enrolments, Examinations & Graduation, Finance, IT Help Desk, Interest Groups, Learning Centre, Library, Psychology Clinic, Student Affairs, Student Careers, and Student Feedback are available on JCU's official website or downloadable contact list.",
+            "category": "General Info",
+            "tags": [
+                "contact",
+                "departments"
+            ],
+            "id": 30
+        }
+    ]
 }
