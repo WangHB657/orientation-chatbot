@@ -44,7 +44,13 @@ def create_new_chat():
 # -------------------------------
 # Chat History
 # -------------------------------
-st.sidebar.title("💬 Chat History")
+with st.sidebar:
+
+    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
+    st.image("image/Logo.png", width=240)
+    st.markdown("</div><br>", unsafe_allow_html=True)
+    st.title("💬 Chat History")
+
 
 to_delete = None
 

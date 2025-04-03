@@ -11,18 +11,18 @@
 ---
 
 ## 🔄 Iteration 2: Real-time Event Updates
-**Status:** ⏳ In Progress  
+**Status:** ✅ Completed
 **Objective:** Notify users about event changes in real time.  
 **Tasks:**
-- [ ] Store user query history.
+- [x] Store user query history.
 - [ ] Send notifications when events are updated.
-- [ ] Allow users to manually check for updates.
+- [x] Allow users to manually check for updates.
 
 ---
 
 ## ⏳ Iteration 3: Multi-turn Conversation & Multilingual Support
-**Status:** 🔜 Planned  
+**Status:** ✅ Completed
 **Objective:** Remember previous chats & support multiple languages.  
 **Tasks:**
-- [ ] Implement session-based memory for chatbot.
-- [ ] Enable automatic language detection and switching.
+- [x] Implement session-based memory for chatbot.
+- [x] Enable automatic language detection and switching.
