@@ -315,6 +315,34 @@
                 "departments"
             ],
             "id": 30
-        }
+        },
+        {
+            "question": "How can I get support for course enrolment or reducing my study load?",
+            "answer": "For any enquiries related to course enrolment, including reducing your study load (taking less than 4 subjects per trimester), please contact [EMAIL] enrolments-singapore@jcu.edu.au [/EMAIL]. They can assist you with enrolment processes, study load adjustments, and related academic matters.",
+            "category": "Enrolment",
+            "tags": ["enrolment", "course registration", "study load", "support", "academic caution", "conditional status"],
+            "id": 31
+        },
+        {
+            "question": "What is the email for Student Affairs?",
+            "answer": "You can contact the Student Affairs department at [EMAIL] studentaffairs-singapore@jcu.edu.au [/EMAIL].",
+            "category": "Contact",
+            "tags": ["student affairs", "contact", "email"],
+            "id": 32
+        },
+        {
+          "question": "How do I report building faults or safety issues?",
+          "answer": "To report building faults or any environmental, health, or safety issues, please contact the facilities team at [PHONE] 6709 3890 [/PHONE] or via email: [EMAIL] estate-management-singapore@jcu.edu.au [/EMAIL].",
+          "category": "Facilities",
+          "tags": ["building", "safety", "facilities", "report", "contact"],
+            "id": 33
+        },
+    {
+      "question": "What is the accommodation contact email?",
+      "answer": "For accommodation-related enquiries, you can contact [EMAIL] accommodation-singapore@jcu.edu.au [/EMAIL].",
+      "category": "Accommodation",
+      "tags": ["accommodation", "email", "contact"],
+        "id": 34
+    }
     ]
 }

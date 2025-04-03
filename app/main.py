@@ -3,103 +3,33 @@ import json
 import openai
 import requests
 from bs4 import BeautifulSoup
-from chatbot import Chatbot
-from strategies.exact import ExactMatchStrategy
-from strategies.keyword import KeywordMatchStrategy
-from strategies.fuzzy import FuzzyMatchStrategy
 import numpy as np
-from fuzzywuzzy import process
 
 app = FastAPI()
-
-
-# ----------------------------
-# ✅ FAQ数据
-# ----------------------------
-
-def load_faq():
-    with open("faq.json", "r", encoding="utf-8") as f:
-        return json.load(f)["faq"]
-
-
-faq_data = load_faq()
 
 # ----------------------------
 # ✅ API KEY
 # ----------------------------
-
 openai.api_key = ""
 
 # ----------------------------
-# ✅ 网站
+# ✅ 读取 FAQ embedding 数据
 # ----------------------------
 
-SCHOOL_WEBSITES = [
-    "https://www.jcu.edu.sg/courses-and-study/orientation",
-    "https://www.jcu.edu.sg/courses-and-study/orientation/before-orientation/",
-    "https://www.jcu.edu.sg/courses-and-study/orientation/during-orientation",
-    "https://www.jcu.edu.sg/courses-and-study/orientation/after-orientation",
-    "https://www.jcu.edu.sg/events",
-    "https://www.jcu.edu.sg/current-students/campus-maps-And-information",
-]
-
-
-# ----------------------------
-# ✅ 爬虫
-# ----------------------------
-
-def fetch_website_text(url):
-    headers = {"User-Agent": "Mozilla/5.0"}
-    try:
-        response = requests.get(url, headers=headers, timeout=10)
-        if response.status_code != 200:
-            return ""
-        soup = BeautifulSoup(response.text, "html.parser")
-        for tag in soup(["script", "style", "nav", "footer", "aside"]):
-            tag.extract()
-        main_content = soup.find("main") or soup.find("article") or soup.find("section")
-        text_content = main_content.get_text(separator="\n", strip=True) if main_content else soup.get_text(
-            separator="\n", strip=True)
-        return text_content
-    except requests.RequestException:
-        return ""
-
-
-def fetch_multiple_websites():
-    return "\n\n".join(fetch_website_text(url) for url in SCHOOL_WEBSITES)
-
-
-# ----------------------------
-# ✅ FAQ 检索
-# ----------------------------
-
-def search_faq(query, top_k=3):
-    bot = Chatbot(ExactMatchStrategy())
-    matched_faqs = []
-
-    for strategy in [ExactMatchStrategy(), KeywordMatchStrategy(), FuzzyMatchStrategy()]:
-        bot.set_strategy(strategy)
-        response = bot.get_response(query, faq_data)
-        if response:
-            for faq in faq_data:
-                if response == faq["answer"]:
-                    matched_faqs.append(faq)
-                    break
-        if len(matched_faqs) >= top_k:
-            break
-
-    return matched_faqs
-
-
-# ----------------------------
-# ✅ Embedding 检索函数
-# ----------------------------
-
-
-# 读取 embedding 后的 FAQ
 with open("faq_embedded.json", "r", encoding="utf-8") as f:
     faq_data = json.load(f)["faq"]
 
+# ----------------------------
+# ✅ 读取 Web embedding 数据
+# ----------------------------
+
+with open("web_embedded.json", "r", encoding="utf-8") as f:
+    web_data = json.load(f)
+
+
+# ----------------------------
+# ✅ Embedding 检索通用函数
+# ----------------------------
 
 def get_query_embedding(text):
     response = openai.embeddings.create(
@@ -113,6 +43,10 @@ def cosine_similarity(vec1, vec2):
     return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
 
+# ----------------------------
+# ✅ FAQ embedding 检索
+# ----------------------------
+
 def search_faq_by_embedding(query, top_k=3):
     query_embedding = get_query_embedding(query)
     scored = []
@@ -124,22 +58,40 @@ def search_faq_by_embedding(query, top_k=3):
 
 
 # ----------------------------
+# ✅ Web embedding 检索
+# ----------------------------
+
+def search_web_by_embedding(query, top_k=3):
+    query_embedding = get_query_embedding(query)
+    scored = []
+    for item in web_data:
+        sim = cosine_similarity(query_embedding, np.array(item["embedding"]))
+        scored.append((sim, item))
+    scored.sort(reverse=True, key=lambda x: x[0])
+    return [item for sim, item in scored[:top_k] if sim > 0.7]
+
+
+# ----------------------------
 # ✅ Prompt Template
 # ----------------------------
 
 prompt_template = '''
 You are an Orientation Assistant Bot for James Cook University Singapore.
 
-You will answer student questions using the following FAQ knowledge:
+You will answer student questions using the following FAQ and website information:
 
+--- FAQ ---
 {faq_context}
 
+--- Website ---
+{web_context}
+
 When answering:
-- Be friendly and helpful.
-- Integrate relevant FAQ information naturally.
-- Do not just copy FAQ, try to answer like a real person.
-- Only answer questions related to JCU SG.
+- If any email addresses (in format [EMAIL] xxx [/EMAIL]) are present in the context, you MUST include the most relevant email address in your answer.
+- Only include emails if they are related to the user's question.
+- Carefully read all provided FAQ and website information.
 - If no information is available, say: "Sorry, I couldn't find precise information. Please check the official website."
+- Only answer questions related to JCU SG.
 
 Question: {user_question}
 
@@ -158,12 +110,23 @@ def build_faq_context(faqs):
 
 
 # ----------------------------
-# ✅ GPT 生成回答【已改为 openai >=1.0 的新写法】
+# ✅ Web context 构造
 # ----------------------------
 
-def generate_answer(user_query, faq_matches, web_content):
+def build_web_context(webs):
+    if not webs:
+        return "No related Website Information."
+    return "\n\n".join([f"Source: {item['url']}\n{item['text']}" for item in webs])
+
+
+# ----------------------------
+# ✅ GPT 生成回答
+# ----------------------------
+
+def generate_answer(user_query, faq_matches, web_matches):
     faq_context = build_faq_context(faq_matches)
-    prompt = prompt_template.format(faq_context=faq_context, user_question=user_query)
+    web_context = build_web_context(web_matches)
+    prompt = prompt_template.format(faq_context=faq_context, web_context=web_context, user_question=user_query)
 
     completion = openai.chat.completions.create(
         model="gpt-4",
@@ -183,14 +146,9 @@ def generate_answer(user_query, faq_matches, web_content):
 @app.get("/chatbot/")
 def chatbot_response(query: str):
     try:
-        # ✅ 改成 embedding 检索
         faq_matches = search_faq_by_embedding(query)
-
-        web_content = fetch_multiple_websites()
-        if not web_content:
-            web_content = "No valid web content."
-
-        final_answer = generate_answer(query, faq_matches, web_content)
+        web_matches = search_web_by_embedding(query)
+        final_answer = generate_answer(query, faq_matches, web_matches)
         return {"response": final_answer}
 
     except openai.AuthenticationError:
