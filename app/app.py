@@ -8,7 +8,17 @@ import uuid
 st.set_page_config(page_title="JCU Orientation Chatbot", page_icon="🎓", layout="wide")
 
 # -------------------------------
-# 初始化
+# 导入外部CSS
+# -------------------------------
+def local_css(file_name):
+    with open(file_name, encoding="utf-8") as f:  # ✅ 重点修复
+        css = f"<style>{f.read()}</style>"
+        st.markdown(css, unsafe_allow_html=True)
+
+local_css("style.css")
+
+# -------------------------------
+# Session 初始化
 # -------------------------------
 def init_session():
     if "chats" not in st.session_state:
@@ -30,23 +40,6 @@ def create_new_chat():
     st.session_state.editing_chat_id = None
 
 # -------------------------------
-# 去除 button 样式
-# -------------------------------
-st.markdown("""
-<style>
-div.stButton > button {
-    background: transparent;
-    border: none;
-    text-align: left;
-    padding: 5px 0;
-}
-div.stButton > button:hover {
-    background: #f5f5f5;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# -------------------------------
 # Chat History
 # -------------------------------
 st.sidebar.title("💬 Chat History")
@@ -57,7 +50,6 @@ for chat_id, chat in st.session_state.chats.items():
     cols = st.sidebar.columns([0.85, 0.15])
     with cols[0]:
         if st.session_state.editing_chat_id == chat_id:
-            # 重命名输入框
             new_title = st.text_input("Rename", value=chat["title"], label_visibility="collapsed", key=f"input_{chat_id}")
             if new_title.strip():
                 chat["title"] = new_title.strip()
@@ -65,21 +57,17 @@ for chat_id, chat in st.session_state.chats.items():
                 st.session_state.editing_chat_id = None
                 st.rerun()
         else:
-            # ✅ 这里修复为可点击的 button，去边框但能点击切换
             if st.button(chat["title"][:27] + ("..." if len(chat["title"]) > 30 else ""), key=f"select_{chat_id}"):
                 st.session_state.current_chat_id = chat_id
                 st.session_state.editing_chat_id = None
                 st.rerun()
 
     with cols[1]:
-        # ... 菜单
         with st.popover("⋯"):
             st.markdown("### Settings")
-            # ✅ 重命名带图标
             if st.button("✏️ Rename", key=f"rename_{chat_id}"):
                 st.session_state.editing_chat_id = chat_id
                 st.rerun()
-            # ✅ 删除带图标
             if st.button("🗑️ Delete", key=f"delete_{chat_id}"):
                 to_delete = chat_id
 
@@ -104,7 +92,6 @@ if not st.session_state.chats:
     create_new_chat()
 if not st.session_state.current_chat_id:
     st.session_state.current_chat_id = list(st.session_state.chats.keys())[0]
-
 
 chat = st.session_state.chats[st.session_state.current_chat_id]
 

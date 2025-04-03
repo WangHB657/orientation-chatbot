@@ -1,0 +1,48 @@
+/* -----------------------
+   Sidebar 全局调整
+------------------------ */
+
+div[data-testid="stSidebarUserContent"] {
+    padding: 0px 8px !important;
+}
+
+/* Chat 按钮 */
+div.stButton > button {
+    background: transparent !important;
+    border: none !important;
+    text-align: left !important;
+    padding: 5px 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    justify-content: flex-start;
+}
+div.stButton > button:hover {
+    background: #f5f5f5 !important;
+    border-radius: 5px;
+}
+
+/* Popover 按钮 */
+div[data-testid="stSidebar"] button[aria-haspopup="dialog"] {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px !important;  /* <<< 固定右侧间距 */
+}
+div[data-testid="stSidebar"] button[aria-haspopup="dialog"]:hover {
+    background: #f5f5f5 !important;
+}
+
+/* -----------------------
+   禁止 sidebar 被拖动
+------------------------ */
+
+section[data-testid="stSidebar"] {
+    resize: none !important;
+}
+section[data-testid="stSidebarResizer"] {
+    display: none !important;
+}
