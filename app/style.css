@@ -1,12 +1,27 @@
-/* -----------------------
-   Sidebar 全局调整
------------------------- */
-
-div[data-testid="stSidebarUserContent"] {
-    padding: 0px 8px !important;
+/* ---------------------------
+   ✅ 锁定 Sidebar 宽度 & 禁止拖动
+--------------------------- */
+section[data-testid="stSidebar"] {
+    min-width: 340px !important;
+    max-width: 340px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
 }
 
-/* Chat 按钮 */
+div[data-testid="stSidebarResizer"] {
+    display: none !important;
+}
+
+/* ---------------------------
+   ✅ 统一 Sidebar 内容右边距（12px 留白）
+--------------------------- */
+div[data-testid="stSidebarUserContent"] > div:first-child {
+    padding-right: 12px !important;
+}
+
+/* ---------------------------
+   聊天按钮：去除边框 & hover 高亮
+--------------------------- */
 div.stButton > button {
     background: transparent !important;
     border: none !important;
@@ -16,12 +31,24 @@ div.stButton > button {
     margin: 0 !important;
     justify-content: flex-start;
 }
+
 div.stButton > button:hover {
     background: #f5f5f5 !important;
     border-radius: 5px;
 }
 
-/* Popover 按钮 */
+/* ---------------------------
+   Create New Chat 按钮样式
+--------------------------- */
+div.stButton > button:has(svg) {
+    font-weight: normal;
+    padding: 5px 0 !important;
+    margin-top: 10px;
+}
+
+/* ---------------------------
+   Popover 按钮 (⋯) 样式
+--------------------------- */
 div[data-testid="stSidebar"] button[aria-haspopup="dialog"] {
     width: 32px !important;
     height: 32px !important;
@@ -30,19 +57,17 @@ div[data-testid="stSidebar"] button[aria-haspopup="dialog"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 8px !important;  /* <<< 固定右侧间距 */
 }
+
 div[data-testid="stSidebar"] button[aria-haspopup="dialog"]:hover {
     background: #f5f5f5 !important;
 }
 
-/* -----------------------
-   禁止 sidebar 被拖动
------------------------- */
-
-section[data-testid="stSidebar"] {
-    resize: none !important;
-}
-section[data-testid="stSidebarResizer"] {
-    display: none !important;
+/* ---------------------------
+   ✅ 不再需要的：columns 内 padding
+--------------------------- */
+div.stColumns > div:nth-of-type(2) {
+    padding-right: 0px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
 }
