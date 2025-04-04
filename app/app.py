@@ -8,6 +8,7 @@ import datetime
 # -------------------------------
 st.set_page_config(page_title="JCU Orientation Chatbot", page_icon="🎓", layout="wide")
 
+
 # -------------------------------
 # 导入外部CSS
 # -------------------------------
@@ -16,7 +17,9 @@ def local_css(file_name):
         css = f"<style>{f.read()}</style>"
         st.markdown(css, unsafe_allow_html=True)
 
+
 local_css("style.css")
+
 
 # -------------------------------
 # Session 初始化
@@ -29,7 +32,9 @@ def init_session():
     if "editing_chat_id" not in st.session_state:
         st.session_state.editing_chat_id = None
 
+
 init_session()
+
 
 # -------------------------------
 # 创建新聊天
@@ -41,16 +46,15 @@ def create_new_chat():
     st.session_state.current_chat_id = new_chat_id
     st.session_state.editing_chat_id = None
 
+
 # -------------------------------
 # Chat History
 # -------------------------------
 with st.sidebar:
-
     st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
     st.image("image/Logo.png", width=240)
     st.markdown("</div><br>", unsafe_allow_html=True)
     st.title("💬 Chat History")
-
 
 to_delete = None
 
@@ -85,10 +89,11 @@ for group, chats in grouped_chats.items():
         cols = st.sidebar.columns([0.85, 0.15])
         with cols[0]:
             if st.session_state.editing_chat_id == chat_id:
-                new_title = st.text_input("Rename", value=chat["title"], label_visibility="collapsed", key=f"input_{chat_id}")
+                new_title = st.text_input("Rename", value=chat["title"], label_visibility="collapsed",
+                                          key=f"input_{chat_id}")
                 if new_title.strip():
                     chat["title"] = new_title.strip()
-                if st.button("✅", key=f"confirm_{chat_id}"):
+                if st.button("✅Confirm", key=f"confirm_{chat_id}"):
                     st.session_state.editing_chat_id = None
                     st.rerun()
             else:
@@ -181,6 +186,7 @@ if st.session_state.current_chat_id:
             return f"⚠️ Server Error: {response.status_code}"
         except requests.exceptions.RequestException as e:
             return f"⚠️ Request failed: {str(e)}"
+
 
     query = st.chat_input("Type your message...")
     if query:

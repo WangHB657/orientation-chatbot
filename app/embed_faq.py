@@ -1,8 +1,11 @@
 import json
 import openai
 import numpy as np
+import os
+from dotenv import load_dotenv
 
-openai.api_key = ""
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def get_embedding(text):

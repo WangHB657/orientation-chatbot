@@ -4,8 +4,11 @@ import numpy as np
 from bs4 import BeautifulSoup
 import json
 import re
+import os
+from dotenv import load_dotenv
 
-openai.api_key = ""
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 # ----------------------------

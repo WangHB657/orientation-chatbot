@@ -4,13 +4,16 @@ import openai
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
+import os
+from dotenv import load_dotenv
 
 app = FastAPI()
 
 # ----------------------------
 # ✅ API KEY
 # ----------------------------
-openai.api_key = ""
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # ----------------------------
 # ✅ 读取 FAQ embedding 数据
