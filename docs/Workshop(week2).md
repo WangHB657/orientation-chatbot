@@ -16,6 +16,8 @@
 
 # Orientation Chatbot - User Stories
 
+---
+
 ## User Story 1: Flexible Event Inquiry
 
 **As a [new student], I want to ask the chatbot various types of questions about Orientation Week,  
@@ -23,68 +25,111 @@ so that I can get accurate and relevant information quickly without needing to f
 
 ### Acceptance Criteria:
 - The chatbot should understand and respond to different types of user queries related to Orientation Week, including:
-  - **General inquiries:** “Tell me about Orientation Week.” → The chatbot provides an overview.
-  - **Event-based queries:** “What events are happening on Monday?” → The chatbot lists all events for that day.
-  - **Location-based queries:** “Where is the welcome ceremony?” → The chatbot provides location details.
-  - **Time-based queries:** “When does the networking session start?” → The chatbot provides event timing.
-  - **Participation-related queries:** “Do I need to register for the campus tour?” → The chatbot clarifies registration requirements.
+  - **General inquiries:** “Tell me about Orientation Week.”
+  - **Event-based queries:** “What events are happening on Monday?”
+  - **Location-based queries:** “Where is the welcome ceremony?”
+  - **Time-based queries:** “When does the networking session start?”
+  - **Participation-related queries:** “Do I need to register for the campus tour?”
 - The chatbot should be able to handle **fuzzy queries**, such as:
-  - “What’s happening this afternoon?” → It should return only **afternoon events**.
+  - “What’s happening this afternoon?” → It should return **afternoon events**.
   - “Are there any fun activities today?” → It should suggest **social events**.
-- If an event does not exist or information is missing, the chatbot should provide a **friendly fallback response** instead of leaving the user without an answer.
-- The chatbot should support both **free-text input** and **menu-based selection** for accessibility.
-
-**So that I can understand the arrangements for Orientation Week in advance and make full preparations.**
+- If an event does not exist or information is missing, the chatbot should provide a **friendly fallback response**.
+- The chatbot should support both **free-text input** and **menu-based selection**.
 
 ### Available Deliverables:
 - The chatbot supports **free-text user queries** and understands **different question types**.
 - The chatbot provides a **sorted list of events** for the queried date, including:
-  - **Time, name, location, description, participation details (e.g., registration required).**
-- If users request additional event details, the chatbot should provide **expanded descriptions** upon request.
+  - **Time, name, location, description, participation details.**
+- If users request additional event details, the chatbot provides **expanded descriptions**.
 
 ---
 
-## User Story 2: Real-time Event Updates
+## User Story 2: Multi-turn Conversation & Multilingual Support
 
-**As a [new student], I want [the chatbot to provide real-time updates]  
-so that [I can be sure I have the most current information and avoid any problems caused by outdated details].**
-
-### Acceptance Criteria:
-- The chatbot should be able to **track events that users have searched for before**.
-- When an event’s **schedule changes**, the chatbot should:
-  - Show the **updated event details** immediately when the user enters the chatbot.
-  - Provide a **notification at the top of the conversation** when updates are available.
-- Users should be able to ask:  
-  - **“Are there any updates to today’s events?”** → The chatbot should return the latest changes.
-- The chatbot should allow users to **opt-in or opt-out of event change notifications**.
-- The chatbot should support **personalized update tracking**, meaning:
-  - If a user has searched for a specific event before, and that event changes,  
-    the chatbot should **proactively notify** them the next time they interact.
-
-### Available Deliverables:
-- When event details change, the chatbot automatically notifies affected users.
-- If users explicitly ask about updates, the chatbot responds with **real-time event modifications**.
-- The chatbot keeps track of **user search history** to provide **personalized update notifications**.
-
----
-
-## User Story 3: Multi-turn Conversation & Multilingual Support
-
-**As a [new student], I want the chatbot to [allow users to have multiple rounds of communication and keep a record of those interactions],  
+**As a [new student], I want the chatbot to allow users to have multiple rounds of communication and keep a record of those interactions,  
 so that I can continue my conversation seamlessly and not have to repeat my queries.**
 
 ### Acceptance Criteria:
-- The chatbot should retain **conversation history within the current session**.
-- If a user **leaves and returns to the chatbot**, it should be able to:
-  - Recall the last **few interactions** and allow users to **continue where they left off**.
-- Users should be able to reference previous parts of the conversation:  
+- The chatbot retains **conversation history within the session**.
+- If a user leaves and returns, the chatbot recalls the last **few interactions**.
+- Users can refer to previous parts of the conversation:
   - *User:* “What about Tuesday’s events?”  
-  - *Chatbot:* Should infer context from the previous query instead of requiring the user to repeat full details.
-- The chatbot should automatically detect the user’s **language preference**.
-- If the user **switches languages mid-conversation**, the chatbot should **adapt accordingly**.
-- The chatbot should support **English, Mandarin, and other university-supported languages**.
+  - *Chatbot:* Infers the date from the earlier question.
+- The chatbot automatically detects the user’s **language preference**.
+- It supports **English**, **Mandarin**, and other university-supported languages.
 
 ### Available Deliverables:
-- The chatbot retains **short-term conversation history** (only within the session).
-- Users can **continue conversations without needing to restart queries**.
-- The chatbot **automatically detects and adjusts to the user's language**.
+- The chatbot keeps **short-term conversation history**.
+- Conversations can **continue naturally** without repeated context.
+- The chatbot **adapts language** based on user input.
+
+---
+
+## User Story 3: Contact Information Extraction
+
+**As a [new student], I want the chatbot to provide official contact details (e.g., email, phone)  
+so that I can reach the correct department without having to browse the website myself.**
+
+### Acceptance Criteria:
+- When asked about contacting a department, the chatbot returns:
+  - **Relevant email addresses** using `[EMAIL]...[/EMAIL]`
+  - **Phone numbers** if available
+  - **Department/service names** for clarity
+- The chatbot should not fabricate contact info.
+- Example:
+  - *User:* “How do I contact accommodation?”  
+  - *Bot:* “You can email [EMAIL]accommodation-singapore@jcu.edu.au[/EMAIL].”
+
+### Available Deliverables:
+- Entity-tagged contact info is extracted from FAQ and website.
+- The chatbot displays verified **emails and phones** clearly.
+- Answers are tailored to the user’s intent.
+
+---
+
+## User Story 4: Fuzzy Suggestions for Similar Questions
+
+**As a [new student], I want the chatbot to suggest related questions when it doesn’t understand mine,  
+so that I can still get useful results even if I asked imprecisely.**
+
+### Acceptance Criteria:
+- When unsure, the chatbot offers **2–3 similar suggestions**:
+  - “Did you mean: …?”
+- Fuzzy matching is applied on FAQ and web content.
+- Example:
+  - *User:* “What is verifcation?”
+  - *Bot:* “Did you mean: ‘What is the reporting and verification session?’”
+- The chatbot allows the user to select a suggestion or rephrase.
+
+### Available Deliverables:
+- GPT or fuzzy matching suggests similar questions.
+- Suggestions are based on **semantic similarity or string distance**.
+- Users are never left with a dead end.
+
+---
+
+## User Story 5: Handling Misspelled Input Gracefully
+
+**As a [new student], I want the chatbot to recognize common spelling mistakes in my queries  
+so that I can still receive helpful responses even if I type something wrong.**
+
+### Acceptance Criteria:
+- When a user enters a misspelled keyword (e.g., “accomodaton”, “orientatoin”), the chatbot should:
+  - Match it to the correct term using **fuzzy matching** or **semantic similarity**.
+  - Suggest the correct version with a message like:  
+    *“Did you mean: ‘accommodation’?”*
+- If the bot is confident, it can proceed to answer directly but should still **confirm the interpretation**:
+  - *“Answering for: ‘Orientation Week’. Let me know if you meant something else.”*
+- If no high-confidence match is found, the chatbot should:
+  - Offer up to **3 closest suggestions**, or ask the user to rephrase.
+
+### Available Deliverables:
+- The chatbot uses fuzzy or embedding-based similarity to match misspelled queries to valid topics.
+- In cases of typos, the chatbot responds with:
+  > “Sorry, I couldn’t find exact info for ‘verifcation’. Did you mean:  
+  > - Verification session  
+  > - Student pass formalities  
+  > - Orientation registration?”
+- This improves user experience and avoids “dead end” interactions.
+
+---
