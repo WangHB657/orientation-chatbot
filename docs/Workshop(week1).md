@@ -1,5 +1,5 @@
 # 📚 CP3407-Chatbot  
-## Orientation Chatbot Application (Enhanced Version)
+## Orientation Chatbot Application
 
 ---
 
@@ -41,10 +41,6 @@ This ensures that students receive contextual, friendly, and fact-based response
 - Orientation schedules, location and reporting procedures
 - Enrolment status, study load reduction, academic caution
 - Student accommodation, events, safety reporting
-
-### 🧪 Feedback-Ready
-- Modular backend structure for future feedback integration
-- Easily extendable dataset and answer accuracy tracking
 
 ---
 
@@ -117,10 +113,10 @@ Answer:
 
 ## 👥 Project Team
 
-| Name         | Role                                           | Responsibilities                                                     |
-|--------------|------------------------------------------------|----------------------------------------------------------------------|
-| Wang Hongbo  | Team Lead, Full-Stack Developer, UI/UX Designer | Designed system architecture, frontend, GPT + embedding integration |
-| Kuang Ziye   | Backend Developer, Data Engineer                | Developed backend API, handled data processing and embedding logic  |
+| Name         | Role                                           | Responsibilities                                                   |
+|--------------|------------------------------------------------|--------------------------------------------------------------------|
+| Wang Hongbo  | Team Lead, Full-Stack Developer, Backend Developer, | Designed system architecture, backend, GPT + embedding integration |
+| Kuang Ziye   | Data Engineer, UI/UX Designer              | Developed frontend, handled data processing and embedding logic    |
 
 ---
 
