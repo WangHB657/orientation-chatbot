@@ -1,51 +1,135 @@
-# CP3407-Chatbot
-# Orientation Chatbot Application
+# 📚 CP3407-Chatbot  
+## Orientation Chatbot Application (Enhanced Version)
 
-## Week 1 CP 3407 Workshop 1
-## Project Overview
-The **Orientation Chatbot Application** is a web-based chatbot designed to enhance the experience and engagement of new students during their orientation program. This chatbot utilizes the **ChatGPT API** to provide immediate and accurate responses to questions about orientation schedules, events, and policies. It also fosters social connections by suggesting interactive games and activities.
+---
 
-By leveraging data from the **Student Affairs department**, the chatbot ensures an engaging, informative, and seamless onboarding experience for students.
+## 🚀 Project Overview
 
+The **Orientation Chatbot Application** is an intelligent assistant developed for **James Cook University Singapore (JCU SG)**.  
+It provides immediate and accurate answers to frequently asked questions regarding orientation schedules, enrolment, academic support, accommodation, and campus services.
 
-## Objectives
-- Integrate the **ChatGPT API** to develop a **web-based chatbot** that answers orientation-related questions.
-- Promote **engagement** among new students by suggesting games and interactive activities.
-- Create a **scalable** and **user-friendly** platform that integrates seamlessly with the existing orientation process.
+By integrating **ChatGPT (GPT-4)** with semantic search (RAG-lite), the chatbot retrieves relevant information from two main sources:
+- A structured **FAQ knowledge base**
+- Official **JCU website content**, crawled and embedded
 
-## Features
+This ensures that students receive contextual, friendly, and fact-based responses throughout their orientation journey.
 
+---
 
-### Information Support:
-- Respond to frequently asked questions about **orientation schedules**, locations, events, and other key details.
-- Provide immediate clarification on **orientation-related policies** or procedures.
+## 🎯 Objectives
 
-### Interactive Suggestions:
-- Recommend **games** and activities to encourage socialization among students.
-- Suggest **team-building exercises** or group discussions.
+- Build a **web-based chatbot** that answers questions about JCU SG orientation using natural language
+- Combine **FAQ matching** and **website content embedding** for better coverage
+- Automatically extract important contact details (email, phone, location, etc.)
+- Provide a user-friendly interface and scalable architecture
 
-### Feedback Collection:
-- Collect feedback on the chatbot’s performance to improve future iterations.
-- Use feedback to refine the **orientation program**.
+---
 
+## 💡 Features
 
-## Technology Stack
+### 🧠 Smart Q&A Support
+- Embedding-based retrieval of top-matching **FAQs**
+- Embedding-based retrieval of relevant **website paragraphs**
+- Entity-enhanced context using `[EMAIL]`, `[PHONE]`, `[DATE]` tags
+- GPT-4 generates conversational, contextual answers
 
-- **Frontend:** Python Streamlit (for chatbot UI)
-- **Backend:** FastAPI (Python REST API)
-- **Chatbot Integration:** OpenAI GPT API (via openai-python SDK)
-- **Data Source:** Static JSON file (`faq.json`) for FAQ matching
-- **Testing:** pytest, requests-mock, Selenium
-- **Deployment:** Localhost (for development), can be deployed to Render / Railway / AWS
-- **Version Control:** Git & GitHub
+### 📬 Accurate Contact Info Extraction
+- Automatically detects and outputs email addresses, phone numbers, and dates when present in context
+- Helps students know exactly whom to contact and how
 
+### 📚 Orientation Information Coverage
+- Orientation schedules, location and reporting procedures
+- Enrolment status, study load reduction, academic caution
+- Student accommodation, events, safety reporting
 
-## Project Management
+### 🧪 Feedback-Ready
+- Modular backend structure for future feedback integration
+- Easily extendable dataset and answer accuracy tracking
 
-### Team Members & Roles:
+---
 
-| **Member Name**  | **Role**                                             | **Responsibilities**                                               |
-|------------------|------------------------------------------------------|--------------------------------------------------------------------|
-| **Wang Hongbo**  | Project Lead & Developer & UI/UX Designer            | Oversee project development, manage timelines, develop chatbot logic |
-| **Kuang Ziye**   | Backend Developer & Data Manager & Frontend Developer| Handle server-side coding, manage database, integrate chatbot with data |
+## 🧱 Technology Stack
 
+| Layer         | Tools Used                                     |
+|---------------|------------------------------------------------|
+| **Frontend**  | `Streamlit` – for chatbot UI                   |
+| **Backend**   | `FastAPI` – for API logic and GPT integration  |
+| **LLM API**   | `OpenAI GPT-4` via `openai` Python SDK         |
+| **Embedding** | `text-embedding-ada-002` – for FAQ and web content |
+| **Data**      | `faq.json`, `faq_embedded.json`, `web_embedded.json` |
+| **Versioning**| `Git`, `GitHub`                                |
+
+---
+
+## ⚙️ Retrieval + Prompt Logic
+
+### 🧠 1. Dual Embedding-Based Retrieval
+
+- User input is converted into a query embedding using `text-embedding-ada-002`
+- The system retrieves top-matching content from:
+  - ✅ **FAQ embeddings**
+  - ✅ **Website paragraph embeddings**
+- Top 3 results from each are selected to form the final context
+
+### 🧾 2. Prompt Construction
+
+The chatbot builds a GPT prompt using both FAQ and website content like this:
+
+You are an Orientation Assistant Bot for James Cook University Singapore.
+
+You will answer student questions using the following FAQ and website information:
+
+--- FAQ --- Q: ... A: ...
+
+--- Website --- Source: ... [EMAIL] ... [/EMAIL] [PHONE] ... [/PHONE]
+
+Instructions:
+
+If any contact information such as [EMAIL], [PHONE], or [DATE] is present, include it clearly in the response.
+
+Only provide information relevant to the user's question.
+
+Do not make up or guess answers.
+
+Answer only about JCU SG.
+
+Question: {user question}
+
+Answer:
+
+### 🤖 3. GPT-4 Response
+
+- The prompt is passed to the GPT-4 API
+- GPT generates a friendly, context-aware, and structured response
+- Emails, dates, and phone numbers are clearly included if available
+
+---
+
+## 📦 Data Files
+
+| File Name             | Description                                     |
+|----------------------|-------------------------------------------------|
+| `faq.json`            | Manually curated FAQ dataset                    |
+| `faq_embedded.json`   | Vectorized embeddings of all FAQs               |
+| `web_embedded.json`   | Embeddings from crawled and segmented JCU pages |
+
+---
+
+## 👥 Project Team
+
+| Name         | Role                                           | Responsibilities                                                     |
+|--------------|------------------------------------------------|----------------------------------------------------------------------|
+| Wang Hongbo  | Team Lead, Full-Stack Developer, UI/UX Designer | Designed system architecture, frontend, GPT + embedding integration |
+| Kuang Ziye   | Backend Developer, Data Engineer                | Developed backend API, handled data processing and embedding logic  |
+
+---
+
+## 📈 Future Improvements
+
+- Add a **feedback collection system** for chatbot evaluation
+- Support **multi-language interactions** (e.g., English + Chinese)
+- Add **chat history and multi-turn conversations**
+- Deploy to the cloud (e.g., Render, Railway, AWS)
+- Visualize **retrieved FAQ / website chunks** for transparency
+
+---
