@@ -176,7 +176,7 @@ Simulate a user asking about different days of Orientation Week in sequence, and
 - ✅ The second response correctly interprets “the second day” and provides the corresponding schedule for January 7, 2025.
 
 **Test Result:**  
-- ✅ Expected to Pass
+- ✅ **Pass**
 
 **Test Output Screenshot:**
 ![u221](../image/u211.jpg)
@@ -197,7 +197,7 @@ Check if the chatbot automatically detects Mandarin input and responds according
 - Follow-up messages continue in Mandarin unless the user switches.
 
 **Test Result:**  
-- ✅ Expected to Pass
+- ✅ **Pass**
 
 **Test Output Screenshot:**
 ![u22](../image/u221.jpg)
@@ -224,7 +224,7 @@ Verify that the chatbot returns the correct email address when asked how to cont
   > “You can email [EMAIL]admissions-singapore@jcu.edu.au[/EMAIL] for enquiries related to admissions.”
 
 **Test Result:**  
-- ✅ Expected to Pass
+- ✅ **Pass**
 - 
 **Test Output Screenshot:**  
 ![u311](../image/u311.jpg)
@@ -244,7 +244,7 @@ Test whether the chatbot includes the phone number if available for the departme
 - Clearly specifies that the information is official.
 
 **Test Result:**  
-- ✅ Expected to Pass
+- ✅ **Pass**
 
 **Test Output Screenshot:**  
 ![u321](../image/u321.jpg)
@@ -264,7 +264,7 @@ Ensure that the chatbot does not make up contact information if the requested de
   > “Sorry, I couldn’t find contact information for ‘teleportation department’. Could you please check the name or ask about another department?”
 
 **Test Result:**  
-- ✅ Expected to Pass
+- ✅ **Pass**
 
 **Test Output Screenshot:**  
 ![u33](../image/u33.jpg)
@@ -285,7 +285,7 @@ Test whether the chatbot can extract the relevant department from a sentence.
   > “For accommodation-related matters, please contact [EMAIL]accommodation-singapore@jcu.edu.au[/EMAIL].”
 
 **Test Result:**  
-- ✅ Expected to Pass
+- ✅ **Pass**
 
 **Test Output Screenshot:**  
 ![u34](../image/u34.jpg)
