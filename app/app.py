@@ -4,13 +4,13 @@ import uuid
 import datetime
 
 # -------------------------------
-# 页面配置
+# 页面配置 Page Configuration
 # -------------------------------
 st.set_page_config(page_title="JCU Orientation Chatbot", page_icon="🎓", layout="wide")
 
 
 # -------------------------------
-# 导入外部CSS
+# 导入外部CSS Importing external CSS
 # -------------------------------
 def local_css(file_name):
     with open(file_name, encoding="utf-8") as f:
@@ -22,7 +22,7 @@ local_css("style.css")
 
 
 # -------------------------------
-# Session 初始化
+# Session 初始化 Session Initialization
 # -------------------------------
 def init_session():
     if "chats" not in st.session_state:
@@ -37,7 +37,7 @@ init_session()
 
 
 # -------------------------------
-# 创建新聊天
+# 创建新聊天 Create New Chat
 # -------------------------------
 def create_new_chat():
     new_chat_id = str(uuid.uuid4())
@@ -59,7 +59,7 @@ with st.sidebar:
 to_delete = None
 
 # -------------------------------
-# 分组显示 Today / Yesterday / Earlier
+# 分组显示 grouping Today / Yesterday / Earlier
 # -------------------------------
 today = datetime.date.today()
 yesterday = today - datetime.timedelta(days=1)
@@ -79,7 +79,7 @@ for chat_id, chat in st.session_state.chats.items():
         grouped_chats["Earlier"].append((chat_id, chat))
 
 # -------------------------------
-# 渲染聊天分组
+# 渲染聊天分组 Rendering Chat Groups
 # -------------------------------
 for group, chats in grouped_chats.items():
     if not chats:
@@ -111,7 +111,7 @@ for group, chats in grouped_chats.items():
                     to_delete = chat_id
 
 # -------------------------------
-# 删除功能
+# 删除功能 Delete function
 # -------------------------------
 if to_delete:
     del st.session_state.chats[to_delete]

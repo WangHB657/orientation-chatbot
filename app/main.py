@@ -16,22 +16,21 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # ----------------------------
-# ✅ 读取 FAQ embedding 数据
+# ✅ Read FAQ embedding,Web embedding,Background Info data
 # ----------------------------
 
 with open("faq_embedded.json", "r", encoding="utf-8") as f:
     faq_data = json.load(f)["faq"]
 
-# ----------------------------
-# ✅ 读取 Web embedding 数据
-# ----------------------------
+with open("background_info.json", "r", encoding="utf-8") as f:
+    background_info = json.load(f)
 
 with open("web_embedded.json", "r", encoding="utf-8") as f:
     web_data = json.load(f)
 
 
 # ----------------------------
-# ✅ Embedding 检索通用函数
+# ✅ Embedding retrieves generic functions
 # ----------------------------
 
 def get_query_embedding(text):
@@ -47,7 +46,7 @@ def cosine_similarity(vec1, vec2):
 
 
 # ----------------------------
-# ✅ FAQ embedding 检索
+# ✅ FAQ embedding Retrieve
 # ----------------------------
 
 def search_faq_by_embedding(query, top_k=3):
@@ -61,7 +60,7 @@ def search_faq_by_embedding(query, top_k=3):
 
 
 # ----------------------------
-# ✅ Web embedding 检索
+# ✅ Web embedding Retrieve
 # ----------------------------
 
 def search_web_by_embedding(query, top_k=3):
@@ -83,6 +82,9 @@ You are an Orientation Assistant Bot for James Cook University Singapore.
 
 You will answer student questions using the following FAQ and website information:
 
+--- Background Info ---
+{background_info}   
+
 --- FAQ ---
 {faq_context}
 
@@ -103,7 +105,7 @@ Answer:
 
 
 # ----------------------------
-# ✅ FAQ context 构造
+# ✅ FAQ context
 # ----------------------------
 
 def build_faq_context(faqs):
@@ -113,7 +115,7 @@ def build_faq_context(faqs):
 
 
 # ----------------------------
-# ✅ Web context 构造
+# ✅ Web context
 # ----------------------------
 
 def build_web_context(webs):
@@ -123,13 +125,15 @@ def build_web_context(webs):
 
 
 # ----------------------------
-# ✅ GPT 生成回答
+# ✅ GPT 生成回答 GPT Generate Answer
 # ----------------------------
 
 def generate_answer(user_query, faq_matches, web_matches):
     faq_context = build_faq_context(faq_matches)
     web_context = build_web_context(web_matches)
-    prompt = prompt_template.format(faq_context=faq_context, web_context=web_context, user_question=user_query)
+    background_text = "\n".join(background_info.values())
+    prompt = prompt_template.format(
+        background_info=background_text,faq_context=faq_context, web_context=web_context, user_question=user_query)
 
     completion = openai.chat.completions.create(
         model="gpt-4",

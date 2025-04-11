@@ -1,0 +1,113 @@
+{
+  "location": "James Cook University (Sims Drive Campus) is located at 149 Sims Drive, Singapore 387380. The Beijing Representative Office is located at #2305 Block B, Winterless Center, No.1 Xidawang Rd., Chaoyang District, Beijing, China 100026.",
+
+  "contact_numbers": "Sims Drive Campus: Tel: +65 6709 3888, Fax: +65 6709 3889. Beijing Office: Tel: +8610 5351 9266.",
+
+  "main_contact_email": "[EMAIL] admissions-singapore@jcu.edu.au [/EMAIL] (Please address all email enquiries and mail to the Sims Drive Campus.)",
+
+  "admissions": "For admissions enquiries, contact: [EMAIL] admissions-singapore@jcu.edu.au [/EMAIL]",
+
+  "arrival_and_greet": "For Airport Meet and Greet services, contact: [EMAIL] meetandgreet-singapore@jcu.edu.au [/EMAIL]",
+
+  "accommodation": "For accommodation services, contact: [EMAIL] accommodation-singapore@jcu.edu.au [/EMAIL]",
+
+  "student_affairs": "For current students, contact the Student Affairs Centre at: [EMAIL] studentaffairs-singapore@jcu.edu.au [/EMAIL]",
+
+  "alumni_career": "For alumni matters, contact: [EMAIL] alumni-singapore@jcu.edu.au [/EMAIL]. For career services, contact: [EMAIL] careers-singapore@jcu.edu.au [/EMAIL]",
+
+  "academic_calendar": "The academic calendar and semester timetables are available at https://www.jcu.edu.sg/current-students/calendars-and-timetables",
+
+  "campus_map_transportation": "Campus Maps & Contact Information: We are located at 149 Sims Drive, Singapore 387380. Click here to take a virtual tour of our campus.\n\nTransportation to the campus:\n\n🚇 MRT:\n- Aljunied MRT (EW9): Approx. 10 min (850m) walk\n- Kallang MRT (EW10): Approx. 10 min (860m) walk\n\n🚌 Bus Stops:\n- Blk 45 (80229): Bus No. 64 and 125 — Approx. 4 min (300m) walk\n- Yi Xiu Factory Building (80071): Bus No. 2, 13, 21, 26, 51, 62, 63, 67, 80, 100, 158 — Approx. 7 min (550m) walk\n- Opp Mohammed Salleh Mosque (80069): Same buses as above — Approx. 9 min (730m) walk",
+
+  "reporting_verification": "All students must attend the Reporting and Verification session. Please arrive 10 minutes early and bring all original documents submitted during application. Required documents: Signed Advisory Note, Letter of Offer, Student Contract, Passport/NRIC, ICA Card, Birth Certificate (for international students), Academic Transcripts, Proof of English Proficiency, Name Change Deed Poll, etc.",
+
+  "preparation_for_study": "Before Orientation Week, students should prepare for living in Singapore, medical check-ups, Student Pass, Student ID card collection, email setup via JCU GetStarted, and access eStudent for enrolment and timetable details. LearnJCU is the online learning platform. For digital readiness, ensure minimum system requirements are met.",
+
+  "timetable_and_enrolment": "Log into StudentFirst to check your timetable. If clashes occur or you need enrolment help, contact the Academic Planning or Enrolments Office. Use eStudent > My Study Plan for course details.",
+
+  "campus_and_transport": "JCU Singapore is located at 149 Sims Drive, Singapore 387380. Nearest MRT stations: Aljunied (EW9) and Kallang (EW10), approx. 10 mins walk. Bus stops: Blk 45 (80229) – Bus 64,125; Yi Xiu Factory (80071) & Opp Mosque (80069) – Bus 2,13,21,...158.",
+
+  "email_account": "Students must use their official JCU email for all university communications. Set it up on JCU GetStarted using your 8-digit Student ID (found on Student Contract).",
+
+  "student_id_card": "Mandatory for campus access, library, exams, and other services. You’ll be notified by Student Affairs via email when ready for collection.",
+
+  "learnjcu_platform": "LearnJCU is the main academic platform for accessing teaching materials, communication, assessments, and class info.",
+
+  "digital_readiness": "Ensure your device meets the general technical requirements for online/blended learning. Visit the Digital Readiness section on the website.",
+
+  "department_contacts": {
+    "academic_planning": {
+      "email": "pd-singapore@jcu.edu.au",
+      "phone": {
+        "UG IT/Science": "+65 6709 3667",
+        "PG/Psych/Ed": "+65 6709 3665"
+      }
+    },
+    "accommodation": {
+      "email": "accommodation-singapore@jcu.edu.au",
+      "phone": "+65 9238 9735",
+      "location": "Block C, C1-09"
+    },
+    "attendance_monitoring": {
+      "email": "attendance-singapore@jcu.edu.au",
+      "phone": "+65 6709 3662 / +65 8139 7157",
+      "location": "Block C, C1-12A"
+    },
+    "counselling": {
+      "email": "studentcounselling-singapore@jcu.edu.au",
+      "phone": "+65 6709 3671",
+      "location": "Block D, D1-14"
+    },
+    "enrolments": {
+      "email": "enrolments-singapore@jcu.edu.au",
+      "location": "Block A, Corporate Reception"
+    },
+    "exams_graduation": {
+      "exams_email": "exams-singapore@jcu.edu.au",
+      "graduation_email": "graduation-singapore@jcu.edu.au",
+      "location": "Block C, C4-16A"
+    },
+    "finance": {
+      "email": "finance-singapore@jcu.edu.au"
+    },
+    "it_support": {
+      "email": "ithelpdesk-singapore@jcu.edu.au",
+      "location": "Block C, C1-08"
+    },
+    "campus_activities": {
+      "email": "campusactivities-singapore@jcu.edu.au",
+      "phone": "+65 6709 3676",
+      "location": "Block C, C1-09"
+    },
+    "learning_centre": {
+      "email": "learningcentre-singapore@jcu.edu.au",
+      "location": "Library, Ground Floor"
+    },
+    "library": {
+      "email": "library-singapore@jcu.edu.au",
+      "phone": "+65 6709 3799",
+      "location": "Block C, C1-08"
+    },
+    "psych_clinic": {
+      "email": "psyclinic-singapore@jcu.edu.au",
+      "phone": "+65 6709 3762",
+      "location": "Block B, B1-03"
+    },
+    "student_affairs": {
+      "email": "studentaffairs-singapore@jcu.edu.au",
+      "location": "Block C, Student Hub"
+    },
+    "student_careers": {
+      "email": "careers-singapore@jcu.edu.au",
+      "phone": "+65 6709 3677 / +65 6709 3855",
+      "location": "Block C, Student Hub"
+    },
+    "feedback": {
+      "note": "Use the centralized student feedback portal for suggestions, compliments, or issues."
+    }
+  },
+
+  "university_life_highs_lows": "Starting university is exciting but can be overwhelming. It's normal to feel anxious during assessments or uncertain at first. You’re not alone—connect with peers, talk about your feelings, and support each other."
+
+}
+
