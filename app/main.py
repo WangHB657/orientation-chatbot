@@ -125,13 +125,24 @@ def build_web_context(webs):
 
 
 # ----------------------------
-# ✅ GPT 生成回答 GPT Generate Answer
+# ✅ GPT 生成回答
 # ----------------------------
 
 def generate_answer(user_query, faq_matches, web_matches):
     faq_context = build_faq_context(faq_matches)
     web_context = build_web_context(web_matches)
-    background_text = "\n".join(background_info.values())
+
+    def flatten_background_info(info_dict):
+        lines = []
+        for value in info_dict.values():
+            if isinstance(value, dict):
+                lines.append(flatten_background_info(value))  # 递归处理嵌套字典
+            else:
+                lines.append(str(value))
+        return "\n".join(lines)
+
+    background_text = flatten_background_info(background_info)
+
     prompt = prompt_template.format(
         background_info=background_text,faq_context=faq_context, web_context=web_context, user_question=user_query)
 
