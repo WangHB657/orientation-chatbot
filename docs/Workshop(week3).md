@@ -65,15 +65,3 @@ Recognize and auto-correct misspelled or malformed queries.
 - [x] Avoid failure due to minor spelling errors.
 
 ---
-
-## 📌 Upcoming Iteration (Optional): Event Subscription or Feedback Collection
-
-**Objective:**  
-Allow students to subscribe to event updates or provide chatbot feedback.
-
-### Potential Tasks:
-- [ ] Build opt-in system for students to receive notifications on saved events.  
-- [ ] Allow users to rate chatbot answers or report unclear responses.  
-- [ ] Store feedback for continuous improvement.
-
----
