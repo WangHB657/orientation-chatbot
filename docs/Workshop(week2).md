@@ -42,6 +42,10 @@ so that I can get accurate and relevant information quickly without needing to f
   - **Time, name, location, description, participation details.**
 - If users request additional event details, the chatbot provides **expanded descriptions**.
 
+### Estimation:
+- Effort: 12 hours
+- Priority: High
+
 ---
 
 ## User Story 2: Multi-turn Conversation & Multilingual Support
@@ -62,6 +66,10 @@ so that I can continue my conversation seamlessly and not have to repeat my quer
 - The chatbot keeps **short-term conversation history**.
 - Conversations can **continue naturally** without repeated context.
 - The chatbot **adapts language** based on user input.
+
+### Estimation:
+- Effort: 12 hours
+- Priority: High
 
 ---
 
@@ -85,6 +93,10 @@ so that I can reach the correct department without having to browse the website 
 - The chatbot displays verified **emails and phones** clearly.
 - Answers are tailored to the user’s intent.
 
+### Estimation:
+- Effort: 6 hours
+- Priority: Medium
+
 ---
 
 ## User Story 4: Fuzzy Suggestions for Similar Questions
@@ -105,6 +117,10 @@ so that I can still get useful results even if I asked imprecisely.**
 - GPT or fuzzy matching suggests similar questions.
 - Suggestions are based on **semantic similarity or string distance**.
 - Users are never left with a dead end.
+
+### Estimation:
+- Effort: 8 hours
+- Priority: Medium
 
 ---
 
@@ -131,5 +147,9 @@ so that I can still receive helpful responses even if I type something wrong.**
   > - Student pass formalities  
   > - Orientation registration?”
 - This improves user experience and avoids “dead end” interactions.
+
+### Estimation:
+- Effort: 5 hours
+- Priority: Medium
 
 ---
