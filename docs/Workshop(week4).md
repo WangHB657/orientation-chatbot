@@ -135,11 +135,11 @@ The chatbot should support both:
 
 
 ## Class Diagram
-![User Story 1 Class Diagram](../image/userstory1class3.drawio.png)
+![Class Diagram](../image/class-diagram(new).png)
 
 
 ---
 
 
 ## Sequence Diagram
-![User Story 1 Sequence Diagram](../image/userstorysequence1(2.27).drawio.png)
+![Sequence Diagram](../image/sequence-diagram(new).png)
