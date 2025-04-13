@@ -48,7 +48,7 @@ Offer fallback suggestions when user input is vague or not understood.
 
 ### Tasks:
 - [x] Apply semantic similarity and fuzzy matching to identify related questions.  
-- [x] Generate “Did you mean...” suggestions based on best matches.  
+- [x] Handle vague queries with general fallback guidance. 
 - [x] Allow user to select a suggested alternative or rephrase.
 
 ---
@@ -56,7 +56,7 @@ Offer fallback suggestions when user input is vague or not understood.
 ## ✅ Iteration 5: Handling Misspelled Input Gracefully
 
 **Objective:**  
-Recognize and auto-correct misspelled or malformed queries.
+Recognize and autocorrect misspelled or malformed queries.
 
 ### Tasks:
 - [x] Integrate typo correction using fuzzy/embedding matching.  
