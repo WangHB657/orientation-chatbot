@@ -109,7 +109,83 @@
 
   "university_life_highs_lows": "Starting university is exciting but can be overwhelming. It's normal to feel anxious during assessments or uncertain at first. You’re not alone—connect with peers, talk about your feelings, and support each other."
   ,
-  "reporting_schedule_tr1s_2025": "📅 TR1S 2025 Orientation Reporting Day Schedule:\n\n✔️ 6 & 7 January 2025 (Mon & Tue): 9:00 AM – 3:00 PM\nVenue: C2-13\nActivity: Medical Check-Up & Student Pass Formalities (Document Check for International Students)\n\n✔️ 8 January 2025 (Wednesday): 9:00 AM – 12:00 PM\nVenue: C2-14 & C2-15\nStudents: Local (Full/Part-Time), East Asia – China (Session 1)\n✔️ 9 January 2025 (Thursday): 9:00 AM – 12:00 PM\nVenue: C2-14 & C2-15\nStudents: IndoChina (Vietnam, Myanmar, Laos, Cambodia, Thailand), Local Transfer, Japan, Korea, Mongolia, Europe, Central Asia, South Asia (India, Sri Lanka, Maldives), Southeast Asia (Indonesia, Malaysia, Brunei), Middle East\n\n👜 Welcome Bag Collection: C1-09 Student Hub (Fingerprint Attendance Registration for all Local and International students with valid Student Pass)\n\nℹ️ For updates, contact: [EMAIL] admissions-singapore@jcu.edu.au [/EMAIL]"
+  "reporting_schedule_tr1s_2025": "📅 TR1S 2025 Orientation Reporting Day Schedule:\n\n✔️ 6 & 7 January 2025 (Mon & Tue): 9:00 AM – 3:00 PM\nVenue: C2-13\nActivity: Medical Check-Up & Student Pass Formalities (Document Check for International Students)\n\n✔️ 8 January 2025 (Wednesday): 9:00 AM – 12:00 PM\nVenue: C2-14 & C2-15\nStudents: Local (Full/Part-Time), East Asia – China (Session 1)\n✔️ 9 January 2025 (Thursday): 9:00 AM – 12:00 PM\nVenue: C2-14 & C2-15\nStudents: IndoChina (Vietnam, Myanmar, Laos, Cambodia, Thailand), Local Transfer, Japan, Korea, Mongolia, Europe, Central Asia, South Asia (India, Sri Lanka, Maldives), Southeast Asia (Indonesia, Malaysia, Brunei), Middle East\n\n👜 Welcome Bag Collection: C1-09 Student Hub (Fingerprint Attendance Registration for all Local and International students with valid Student Pass)\n\nℹ️ For updates, contact: [EMAIL] admissions-singapore@jcu.edu.au [/EMAIL]",
+
+  "admissions_info": {
+  "admissions_requirements": {
+    "general": "Applicants must have completed 12 years of schooling and achieved English proficiency equivalent to IELTS 6.0 or higher. Pathway programs are available.",
+    "country_specific": "Entry requirements may differ based on the applicant’s country and chosen course of study. Please refer to the specific course pages for details.",
+    "contact": "For more information, contact your local representatives or email admissions-singapore@jcu.edu.au.",
+    "location": "Admissions Office, 149 Sims Drive, Block A, Singapore 387380",
+    "phone": "+65 6709 3888",
+    "email": "admissions-singapore@jcu.edu.au",
+    "opening_hours": "8:30am to 6:00pm, Monday to Friday (Closed on Sat/Sun/Public Holidays)"
+  },
+  "advanced_standing": {
+    "eligibility": "Students with prior tertiary study may be eligible for exemption from some subjects.",
+    "instructions": "Attach transcripts and subject syllabi along with the Advanced Standing Application Form during your application.",
+    "assessment_tool": "Visit the Advanced Standing Assessor to view existing arrangements with institutions worldwide."
+  },
+  "credit_transfer": {
+    "policy": "Assessment must be completed before enrolment due to the binding nature of the Standard Student Contract.",
+    "note": "Once the contract is signed, it cannot be amended. Students must submit supporting documents at the time of application.",
+    "form": "Please download the Credit Transfer Form from the official site."
+  },
+  "how_to_apply": {
+    "intakes": [
+      { "study_period": "91 & 51", "month": "March", "program": "All programs" },
+      { "study_period": "92 & 52", "month": "July", "program": "All programs" },
+      { "study_period": "93 & 53", "month": "November", "program": "All programs" },
+      { "study_period": "58", "month": "March", "program": "Psychology Master/Doctor" },
+      { "study_period": "59", "month": "July", "program": "Psychology Master/Doctor" }
+    ],
+    "before_starting": [
+      "Valid email address (used for all application correspondence)",
+      "Web browser with JavaScript enabled (IE 7+/Firefox 2+)",
+      "Documents in PDF, DOC, DOCX or JPG format (max 5MB each, named in English)"
+    ],
+    "documents_required": [
+      "Highest education certificate and transcript (translated if not in English)",
+      "Course/subject synopsis (for credit exemption)",
+      "English proficiency proof (IELTS/TOEFL/Medium of Instruction letter)",
+      "NRIC or Passport/FIN",
+      "Authorization form (if using an agent)",
+      "Student Referral Form (if referred by alumni)",
+      "Passport-sized photo (JPEG, white background, <60KB)"
+    ],
+    "account_registration": {
+      "steps": [
+        "Click 'APPLY NOW' on your chosen course page",
+        "Provide personal details, citizenship, past education, etc.",
+        "Agree to terms and receive your login ID/password via email"
+      ]
+    },
+    "application_process": [
+      "Choose course and intake",
+      "Provide residential and English proficiency status",
+      "Apply for credit exemption (if applicable)",
+      "Provide emergency and agent contact details",
+      "Submit application declaration and complete submission"
+    ],
+    "tracking": "Check your application status via eStudent using the login details emailed to you after registration"
+  }
+},
+  "academic_calendars": {
+  "overview_page": "https://www.jcu.edu.sg/current-students/calendars-and-timetables",
+  "semesters": {
+    "2025_Semester_1": "https://www.jcu.edu.sg/__data/assets/pdf_file/0007/2184883/James-Cook-University,-Singapore-Campus-Academic-Calendar-Semester-2025.pdf?v=0.1.1"
+  },
+  "trimesters": {
+    "2025_TR1S_TR2_TR3": "https://www.jcu.edu.sg/__data/assets/pdf_file/0006/2184882/James-Cook-University,-Singapore-Campus-Academic-Calendar-Trimester-2025.pdf?v=0.1.2"
+  },
+  "special_periods_2024_2025": {
+    "SP51_TR2_TR3_2024": "https://www.jcu.edu.sg/__data/assets/pdf_file/0011/2072396/2024-Academic-Calendar-SP51-TR2-and-TR3-2024.pdf?v=0.1.1",
+    "SP58_SP59_2024": "https://www.jcu.edu.sg/__data/assets/pdf_file/0005/2072399/2024-Academic-Calendar-SP58-and-SP59.pdf?v=0.1.1",
+    "SP91_SP92_SP93_2024": "https://www.jcu.edu.sg/__data/assets/pdf_file/0015/2072400/2024-SP91-93-Calendar-update-July-20242810.pdf?v=0.1.2",
+    "SP82_SP84_SP86": "https://www.jcu.edu.sg/__data/assets/pdf_file/0018/2072403/Academic-Calendar-SP82-SP84-and-SP86.pdf?v=0.1.0"
+  }
+}
+
 
 }
 
