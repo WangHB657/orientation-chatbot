@@ -72,18 +72,27 @@ streamlit run app.py
 
 ```
 .
-├── app.py                 # Streamlit UI
-├── main.py                # FastAPI backend
-├── faq.json               # Raw FAQ data
-├── faq_embedded.json      # FAQ with embeddings
-├── web_embedded.json      # Website content with embeddings
-├── strategies/            # Matching strategies (exact, keyword, fuzzy)
-├── utils/                 # Web scraper, embedding tools, etc.
-├── .env                   # Your OpenAI API key (NOT committed)
-├── .env.example           # Template for environment setup
-├── .gitignore             # Git ignore rules
-├── requirements.txt
-└── README.md
+├── app/
+│   ├── image/                         # Logo and image assets
+│   ├── strategies/                   # Matching strategies for FAQ queries
+│   │   ├── __init__.py               # Init file for strategy module
+│   │   ├── base.py                   # Base class for all strategies
+│   │   ├── exact.py                  # Exact match strategy
+│   │   ├── fuzzy.py                  # Fuzzy match strategy
+│   │   ├── keyword.py                # Keyword match strategy
+│   ├── app.py                        # Streamlit frontend UI
+│   ├── background_info.json          # Static info for orientation (e.g., contacts, campus info)
+│   ├── chatbot.py                    # Main chatbot logic and response generation
+│   ├── embed_faq.py                  # Script to embed FAQ JSON data
+│   ├── embedding_utils.py            # Helper functions for embeddings
+│   ├── faq.json                      # Raw FAQ data (non-embedded)
+│   ├── faq_embedded.json             # FAQ data with vector embeddings
+│   ├── main.py                       # FastAPI backend entry point
+│   ├── style.css                     # Custom CSS styles for the Streamlit app
+│   ├── web_embed.py                  # Script to embed web content
+│   ├── web_embedded.json             # Embedded web page data
+│   ├── web_embedding_utils.py        # Web scraping + embedding helpers
+
 ```
 
 ---
